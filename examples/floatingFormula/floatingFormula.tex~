@@ -1,0 +1,22 @@
+
+
+
+% Dies ist ein Kommentar
+
+\documentclass{article}
+%
+% Praeambel
+%
+\usepackage[ngerman]{babel}
+
+\begin{document}
+
+F\"ur die reellen Zahlen \begin{math}x\end{math} und \(y\) sei $x \cdot y < 1$.
+
+Achtung! \glqq keine Leerzeichen\grqq~ wird im Mathematik-Modus zu \glqq$keine Leerzeichen$\grqq.
+
+Achtung! \glqq keine Leerzeichen\grqq~ wird im Mathematik-Modus zu \glqq$keine \, Leerzeichen$\grqq. \\
+Achtung! \glqq keine Leerzeichen\grqq~ wird im Mathematik-Modus zu \glqq$keine \: Leerzeichen$\grqq. \\
+Achtung! \glqq keine Leerzeichen\grqq~ wird im Mathematik-Modus zu \glqq$keine \; Leerzeichen$\grqq. \\
+
+\end{document}

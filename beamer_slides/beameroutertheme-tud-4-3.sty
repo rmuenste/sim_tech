@@ -1,0 +1,148 @@
+%-------------------------------------------------------------------------------
+% Outer theme file
+%-------------------------------------------------------------------------------
+
+\mode<presentation>
+
+
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows}
+
+
+% Seitenanpassung
+\usepackage{geometry}
+\geometry{paperwidth=254mm,paperheight=190.5mm,left=0mm,right=0mm,top=0mm,bottom=0mm} % Papiergroesse
+\setbeamersize{text margin left=10.0mm,text margin right=10.0mm} % Marginalien fuer Inhalt
+
+% Deaktivierung der Navigationssymbole
+\setbeamertemplate{navigation symbols}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Folientitel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{frametitle}
+{%
+  \insertframetitle\\[24pt]
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Folientitel Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Some computations dedicated to the progressbar...
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newdimen\progressbar@currentbarlength
+\newdimen\progressbar@framenumberrectangle
+\newdimen\progressbar@titlerectangle
+\newdimen\progressbar@leftbar
+\newdimen\progressbar@barlengthmm
+
+\newcount\progressbar@tmpresult
+\newcount\progressbar@numer
+\newcount\progressbar@denom
+\newcount\progressbar@barlength
+
+\progressbar@framenumberrectangle=\paperwidth
+\progressbar@titlerectangle=\paperwidth
+
+\advance\progressbar@framenumberrectangle by -1.4cm
+\advance\progressbar@titlerectangle by -2.1cm
+
+\progressbar@barlength=220 % (in millimeters)
+\progressbar@barlengthmm=\progressbar@barlength mm
+\progressbar@leftbar=\progressbar@titlerectangle
+\advance\progressbar@leftbar by -\progressbar@barlength mm
+
+
+
+\def\insertprogressbar{
+  \ifnum\inserttotalframenumber=1\else
+    \progressbar@numer=\insertframenumber
+    \advance\progressbar@numer by -1
+    \progressbar@denom=\inserttotalframenumber
+    \advance\progressbar@denom by -1
+    \progressbar@tmpresult=\progressbar@barlength
+    \multiply\progressbar@tmpresult by \progressbar@numer
+    \divide\progressbar@tmpresult by \progressbar@denom
+    \progressbar@currentbarlength=\progressbar@tmpresult mm
+
+    \begin{tikzpicture}
+      %\shade[top color=bg, bottom color=TUgreen] (0, -0.5) rectangle  (2*\paperwidth, 0.4cm);
+      \shade[top color=white, bottom color=white] (0, -0.5) rectangle  (2*\paperwidth, 0.4cm);
+
+      % Box for Page Counter
+      \draw (\progressbar@framenumberrectangle, -0.02cm) node [anchor=mid west, draw=bg!70!fg, fill=bg] {\color{structure.fg!70!bg}\insertframenumber~/~\inserttotalframenumber};
+
+
+      % Progress Bar
+      \fill (\progressbar@leftbar, -0.12cm) [fill=white, rounded corners=0.1cm] rectangle (\progressbar@titlerectangle, 0.08cm);
+      \ifnum\insertframenumber=1\else
+      \shade[left color=TUgreen, right color=TUgreen, rounded corners=0.1cm] (\progressbar@leftbar, -0.12cm) rectangle ++(\progressbar@currentbarlength, 0.3cm);
+      \fi
+      \draw (\progressbar@leftbar, -0.12cm) [TUgreen!50!white, rounded corners=0.1cm] rectangle ++(\progressbar@barlengthmm, 0.3cm);
+    \end{tikzpicture}
+  \fi
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Kopfzeile %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}
+{%
+  \setlength{\unitlength}{1mm}
+  \begin{picture}(254,34.8)(0,0)
+
+
+    % Trennbalken
+    \put(10.4,10.8){\color{TUgreen}\rule{233mm}{0.75pt}}
+
+    % Logo-Box mit tud-Logo
+    \put(10.71,9.8){%
+      \begin{minipage}[b][24mm][c]{59.69mm}
+	\pgfuseimage{tudlogosmall}
+      \end{minipage}
+    }
+
+    \put(41.2,20.8){%
+      %\begin{tabular}{R{60mm}}
+\begin{tabular}{ >{\RaggedLeft}p{20cm} }
+             
+ 		\ifx\insertdate\empty\else        
+          \color{black} \small \insertdate \\
+		\fi
+		\ifx\insertauthor\empty\else
+		  \color{black} \small \insertauthor\\
+		\fi
+        \color{black} \small \insertshorttitle
+	\end{tabular}
+    }
+
+
+  \end{picture}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Kopfzeile Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fusszeile %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{footline}
+{%
+  \setlength{\unitlength}{1mm}
+  \begin{picture}(254,12.5)(0,0)
+    % Box fuer Info
+    \put(-3.4,0){%
+      \begin{minipage}[b][12.5mm][c]{169.5mm}
+	\insertprogressbar
+      \end{minipage}
+    }
+
+  \end{picture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fusszeile Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mode
+<all>

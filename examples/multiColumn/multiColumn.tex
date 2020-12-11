@@ -1,0 +1,28 @@
+
+
+
+% Dies ist ein Kommentar
+
+\documentclass{article}
+%
+% Praeambel
+%
+\usepackage[ngerman]{babel}
+
+\begin{document}
+
+\begin{center} 
+% Definiere Tabelle mit vier Spalten
+\begin{tabular}{llll}
+  eins & zwei & drei \\ \hline
+% Die erste Spalte in dieser Reihe hat zwei Eintraege, 
+% die mit einer \vline getrennt sind 
+  vier \vline{} f\"unf & sechs & \\
+% Eine horizontale Linie von Zeile 1 bis 2
+  \cline{1-2}
+% Erstelle eine Zelle, die sich über 3 Spalten erstreckt 
+  \multicolumn{3}{|l|}{sieben}
+\end{tabular}
+\end{center}
+
+\end{document}

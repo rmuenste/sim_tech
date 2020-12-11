@@ -1,0 +1,89 @@
+% default values
+\providecommand{\dozent}{DOZENT}
+\providecommand{\veranstaltung}{VERANSTALTUNG}
+\providecommand{\zeitraum}{ZEITRAUM}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\KOMAoptions{paper=a4}      % def. of pagesize
+\KOMAoptions{twoside=false}
+\KOMAoptions{fontsize=12pt}
+\KOMAoptions{headinclude=true}
+\KOMAoptions{footinclude=false}
+\KOMAoptions{mpinclude=false}
+\usepackage{geometry}
+\geometry{inner=2cm, outer=2cm, top=2cm, bottom=2cm}
+\geometry{includehead}
+\geometry{headsep=2cm, footskip=0.0cm, headheight=1.9cm}
+\usepackage{scrpage2}
+\usepackage{booktabs}
+\usepackage{dsfont}
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\raggedbottom % latex no longer streches vertical spaces s.th. text reaches the bottom
+\usepackage{amsfonts,latexsym}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amscd,amssymb} % AMS-packages for theorem environments
+\usepackage{fixmath} % upper case greek letters: normal style -> italic style
+\usepackage{graphicx} % \includegraphics
+\usepackage{eso-pic} % background images
+\usepackage{pifont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{hyperref}
+\hypersetup{pdfview={Fit},pdfstartview={Fit}}
+\hypersetup{breaklinks=true,colorlinks=true,pdfborder={0 0 0}}
+\hypersetup{linkcolor=fau, anchorcolor=fau, citecolor=fau, filecolor=fau, urlcolor=fau}
+\hypersetup{pdfauthor={\dozent},pdftitle={\veranstaltung}}
+\hypersetup{pdftitle={\veranstaltung}}
+%\hypersetup{pdftitle={\veranstaltung (Rev. \gitAbbrevHash)}}
+%\hypersetup{pdfsubject={Revision \gitHash}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{fau}{HTML}{84B819}
+
+\newcounter{chapter}
+
+\input{theorems}
+\input{listings}
+\input{colors}
+\input{abbrev}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Customization of captions in floating environments such as figure and table
+\usepackage{caption}
+\captionsetup{margin=10pt,font=small,labelfont={bf,sf},position=bottom}
+
+
+\usepackage{lastpage}
+\usepackage{fancybox}
+\usepackage{comment}
+\specialcomment{loesung}{\begingroup\changefont{cmss}{m}{n}\color{fau}}{\endgroup}
+\specialcomment{loesungcode}{\begingroup\sffamily}{\endgroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{scrheadings}
+\rofoot{}
+\lofoot{}
+\cofoot{}
+\lohead{ \includegraphics[height=10mm]{img/tud.pdf}\\[0.5cm]
+\changefont{cmss}{m}{n} 
+\veranstaltung\\
+\dozent\\~\\~
+}
+\rohead{  \includegraphics[height=10mm]{img/m_fak.pdf} \\[0.5cm]
+\changefont{cmss}{m}{n} 
+\zeitraum \\ Übungsaufgaben -- Seite \thepage/\pageref*{LastPage} \\[0.2cm] \hrule ~\\[0.2cm]~}

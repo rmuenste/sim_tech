@@ -1,0 +1,28 @@
+\begin{frame}[fragile]
+  \frametitle{Inhaltsverzeichnis ausgeben}
+  \begin{itemize}
+    \item um Standardverzeichnisse auszugeben, muss man einfach die entsprechenden Schlüsselwörter angeben:
+      \begin{itemize}
+        \item \befehl{tableofcontents}
+        \item \befehl{listoffigures}
+        \item \befehl{listoftables}
+      \end{itemize}
+    \item die maximale Tiefe des Inhaltsverzeichnisses kann mit folgendem Befehl geändert werden:
+      \begin{itemize}
+        \item \befehl{setcounter\{tocdepth\}\{1\}}
+      \end{itemize}
+    \item manuelle Einträge können so eingefügt werden:
+      \begin{itemize}
+        \item \befehl{addcontentsline\{toc\}\{subsection\}\{Titel\}}
+      \end{itemize}
+    \item mögliche Werte für das Zielverzeichnis:
+      \begin{center}
+        \begin{tabular}{lll}
+          \emphkeyword{toc} & \textit{table of contents} &\keyword{chapter}, \keyword{section}, \keyword{subsection} \\ && \keyword{subsubsection}, \keyword{paragraph} \\
+          \emphkeyword{lof} & \textit{list of figures} & \keyword{figure} \\
+          \emphkeyword{lot} & \textit{list of tables} & \keyword{table}
+        \end{tabular}
+      \end{center}
+  \end{itemize}
+\end{frame}
+

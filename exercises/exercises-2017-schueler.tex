@@ -1,0 +1,70 @@
+\documentclass[fleqn,idxtotoc,bibtotoc,pointlessnumbers,ngerman]{scrartcl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\dozent}{Christopher Basting}
+\newcommand{\veranstaltung}{Einf\"uhrung in \LaTeX}
+\newcommand{\zeitraum}{06. Februar 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+
+\usepackage{gitinfo}
+\input{sheet.tex}
+\linespread{1.05}
+
+\lstset{literate={ü}{{\"u}}1}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+\lstset{
+ morekeywords={begin,documentclass,usepackage,chapter,blindtext,
+ section,textit,texttt,textbf}
+}
+\usepackage{fancybox, graphicx}
+
+\excludecomment{loesung}
+%\usepackage{draftwatermark} \SetWatermarkText{\textbf{Alle Angaben ohne Gew\"ahr.}} \SetWatermarkLightness{0.85} \SetWatermarkScale{0.3}
+
+\usepackage{lmodern}
+
+% Einige Befehle (s. Thomas Rohkaemper's Slides)
+\definecolor{darkgray}{gray}{0.3}
+\newcommand{\kommandozeile}[1]{{{\ttfamily\bfseries \color{white}\colorbox{black}{#1}}}}
+\newcommand{\dateiname}[1]{{\ttfamily\bfseries \color{TUgreen}#1}}
+\newcommand{\emphword}[1]{{\color{TUgreen}#1}}
+\newcommand{\keyword}[1]{\texttt{\color{darkgray}#1}}
+\newcommand{\emphkeyword}[1]{\texttt{\color{TUgreen}#1}}
+\newcommand{\befehl}[1]{\texttt{\color{darkgray}\symbol{`\\}#1}}
+\newcommand{\tabitem}{~~\llap{\color{TUgreen}\textbullet}~~}
+
+\usepackage{fancybox, graphicx}
+
+\begin{document}
+\changefont{cmss}{m}{n}
+
+%\blattnonum{\"Ubungsaufgaben}
+
+\begin{aufg}[Ein erstes Dokument] \label{aufgabe-hello-world}
+Erstellen Sie ein einfaches \LaTeX-Dokument. Teilen Sie den Text in Kapitel und Unterkapitel ein. Setzen Sie einige Wörter im Text kursiv, im Fettdruck oder in Schreibmaschinenschrift und in verschiedenen Schriftgrößen. Verwenden Sie zum Beispiel das Paket \keyword{blindtext} zur Erzeugung von Text-Passagen.
+\lstinputlisting{solutions/exercise1.tex}
+\end{aufg}
+
+\begin{aufg}[Listen und Aufzählungen]
+Erstellen Sie ein Kochrezept. Verwenden Sie für die Zutatenliste die Aufzählungs-Umgebung \keyword{itemize} und für die Zubereitungshinweise die \keyword{enumerate}-Umgebung.
+\end{aufg}
+
+\begin{aufg}[Mathematischer Formelsatz]
+Erzeugen Sie ein kleine Formelsammlung mit Formeln Ihrer Wahl.
+\end{aufg}
+
+\vfill
+
+\hrule ~\\[-0.5cm]
+
+\noindent Die Präsentation kann hier heruntergeladen werden:
+\begin{center}
+	\url{https://www.mathematik.tu-dortmund.de/sites/basting/download/latex\_intro.pdf}
+\end{center}
+Benutzername: {\tt 2017}, Passwort: {\tt 27A-9CF-72D}
+
+\end{document}
+
+

@@ -1,0 +1,86 @@
+%-------------------------------------------------------------------------------
+% Color theme file
+%-------------------------------------------------------------------------------
+
+\mode<presentation>
+
+
+% Farbdefinitionen
+\definecolor{tudgrey}{RGB}{150,150,150}
+\xdefinecolor{TUgreen}{RGB}{132, 186, 26}       % 0
+\xdefinecolor{TUdarkgreen}{RGB}{75, 98, 44}     % 1
+\xdefinecolor{TUolive}{RGB}{83, 145, 45}        % 2
+\xdefinecolor{TUorange}{RGB}{227, 105, 19}      % 3
+\xdefinecolor{TUyellow}{RGB}{242, 189, 0}       % 4
+\xdefinecolor{TUcitron}{RGB}{249, 219, 0}       % 5
+\xdefinecolor{TUlime}{RGB}{215, 215, 0}         % 6
+\xdefinecolor{TUlightgreen}{RGB}{226, 241, 195} % 7
+
+% Struktur
+\setbeamercolor{structure}{fg=TUgreen}
+
+% Titel
+\setbeamercolor{title page}{fg=black}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{parent=titlelike}
+
+% normaler Text
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+
+% Fusszeile
+\setbeamercolor{footline}{fg=tudgrey}
+
+% Ueberschriften
+\setbeamercolor{caption}{fg=black}
+\setbeamercolor{caption name}{fg=black}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%% Aufzaehlungen und Listen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enumerate item
+\setbeamercolor{enumerate item}{fg=TUgreen}
+\setbeamercolor{enumerate subitem}{fg=TUgreen}
+\setbeamercolor{enumerate subsubitem}{fg=TUgreen}
+
+% Itemize item
+\setbeamercolor{itemize item}{fg=TUgreen}
+\setbeamercolor{itemize subitem}{fg=TUgreen}
+\setbeamercolor{itemize subsubitem}{fg=TUgreen}
+
+% Description item
+\setbeamercolor{description item}{fg=TUgreen}
+\setbeamercolor{description subitem}{fg=TUgreen}
+\setbeamercolor{description subsubitem}{fg=TUgreen}
+%%%%%%%%%%%%%%%%%%%%%% Aufzaehlungen und Listen Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamercolor*{block title}{fg=black, bg=TUgreen}
+\setbeamercolor*{block body}{fg=black, bg=TUlightgreen}
+
+\setbeamercolor*{block title alerted}{fg=black, bg=TUorange}
+\setbeamercolor*{block body alerted}{fg=black, bg=TUlightgreen}
+
+\setbeamercolor*{block title example}{fg=black, bg=TUyellow}
+\setbeamercolor*{block body example}{fg=black, bg=TUlightgreen}
+
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\newenvironment<>{problock}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=white,bg=TUgreen}
+       \setbeamercolor{block body}{fg=black,bg=TUgreen!10}
+       \setbeamercolor{itemize item}{fg=orange!20!black}
+       \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+
+\mode
+<all>
+

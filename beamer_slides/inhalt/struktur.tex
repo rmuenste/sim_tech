@@ -1,0 +1,108 @@
+\begin{frame}[fragile]
+	\frametitle{Dokumentenklasse}
+	
+	\begin{block}{Allgemeine Form}
+		\lstinline$\documentclass[option1,option2]{klasse}$
+	\end{block}
+	\vfill
+	einige verfügbare Klassen:
+	\begin{itemize}
+		\item \emphkeyword{article}, \emphkeyword{scrartcl} für Artikel, Ausarbeitungen oder Berichte
+		\item \emphkeyword{report}, \emphkeyword{scrreprt} für Ausarbeitungen, Diplomarbeiten, Skripten oder Dissertationen
+		\item \emphkeyword{book}, \emphkeyword{scrbook} für Bücher
+		\item \emphkeyword{letter}, \emphkeyword{scrlttr2} für Briefe
+	\end{itemize}
+	\vfill
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Dokumentenklasse -- häufig benutzte Optionen}
+	
+	\begin{tabular}{rl}
+		\emphkeyword{draft} & Entwurfsmodus (markiert überstehenden Text, zeigt Grafiken als Box) \\
+		\emphkeyword{11pt} & Schriftgr\"o\ss{}e 11 Punkte \\
+		\emphkeyword{12pt} & Schriftgr\"o\ss{}e 12 Punkte\\
+		\emphkeyword{a4paper} & Gr\"o\ss{}en anpassen f\"ur Din A4\\
+		\emphkeyword{titlepage} & Titelseite erzwingen f\"ur \keyword{\texttt{article}}\\
+		\emphkeyword{twocolumn} & zweispaltiges Dokument\\
+		\emphkeyword{twoside} & Vorder- und R\"uckseite der Seiten wird bedruckt\\
+		\emphkeyword{fleqn} & Formeln linksb\"undig setzen\\
+		\emphkeyword{leqno} & Nummerierung von Formeln links statt rechts
+	\end{tabular}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Titelseite aus Metadaten}
+	
+	\only<1>{
+	\latexBeispielDateiCodeAnmerkungen{automatisch generierte Titelseite}{examples/Titelseite/Titelseite}{
+	\begin{tabular}{rp{6cm}}
+		\keyword{\~} & unzerbrechliches Leer\-zeichen\\
+		\befehl{title} & Titel des Dokuments \\
+		\befehl{author} & Autoren (Schlüsselwort \befehl{and} bei Angabe mehrerer Autoren) \\
+		\befehl{date} & Veröffentlichungsdatum\\
+		\befehl{maketitle} & generiert die Titelseite aus den Metadaten
+	\end{tabular}
+	}}
+	\only<2>{\latexBeispielDatei{automatisch generierte Titelseite}{examples/Titelseite/Titelseite}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigene Titelseiten}
+	\begin{itemize}
+		\item um die Titelseite selbst zu gestalten, kann man die \emphkeyword{titlepage}-Umgebung nutzen
+	\end{itemize} \vfill
+		\latexBeispielDirektFake{Beispiel: eigene Titelseite}{examples/Eigene_Titelseite/Eigene_Titelseite}{\textbf{\Huge Nicht wichtig}\\geschrieben von mir\ldots} \vfill
+	\begin{itemize}
+		\item die Titelseite taucht an der Stelle im Text auf, an der sie definiert wird
+		\item bei einigen Dokumentenklassen (z. B. \emphword{book}) nimmt die Titelseite auch eine ganze Seite ein
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Abstract (Zusammenfassung)}
+	\begin{itemize}
+		\item durch die \emphkeyword{abstract}-Umgebung kann man eine Zusammenfassung des Inhalts angeben
+	\end{itemize} \vfill
+	\latexBeispielDirektFake{Beispiel: Abstract (Zusammenfassung)}{examples/abstract/abstract}{
+	\begin{center} \textbf{\LARGE Abstract} \end{center} \noindent \ldots Zusammenfassung des Textes \ldots} \vfill
+	\begin{itemize}
+        \item der angezeigte Name \glqq Abstract\grqq{} kann individualisiert werden:\\
+		\lstinline$\renewcommand{\abstractname}{MeinName}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Strukturierung des Dokuments}
+	
+	\begin{itemize}
+		\item Gliederung in Kaptiel und Unterkapitel
+		\begin{itemize}
+			\item \befehl{part\{\}} (nicht in allen Dokumentklassen)
+			\item \befehl{chapter\{\}} (nicht in allen Dokumentklassen)
+			\item \befehl{section\{\}}
+			\item \befehl{subsection\{\}}
+			\item \befehl{subsubsection\{\}}
+			\item \befehl{paragraph\{\}}
+			\item \befehl{subparagraph\{\}}
+		\end{itemize}
+		\item in den geschweiften Klammern \{\} kann der Name des jeweiligen (Unter-)Kapitels angegeben werden
+		\item mit dem Befehl \befehl{appendix} kann markiert werden, dass die nachfolgenden (Unter-)Kapitel zum Anhang gehören
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mehrere Quelldateien}
+	\begin{itemize}
+		\item um Quelltext aus einer anderen Datei einzufügen, wird der \befehl{input}-Befehl genutzt\\
+		\lstinline$\input{datei}$
+		\item um ganze Kapitel einzubinden, verwendet man stattdessen den Befehl\\
+		\lstinline$\include{kapitel}$
+		\item zur Gliederung des \LaTeX-Quellcodes schreibt man Kapitel in jeweils eigene Dateien\\
+		\lstinline$\include{kapitel1}$\\
+		\lstinline$\include{kapitel2}$\\
+		usw.
+	\end{itemize}
+\end{frame}

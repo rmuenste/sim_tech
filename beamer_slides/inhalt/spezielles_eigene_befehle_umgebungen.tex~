@@ -1,0 +1,77 @@
+\begin{frame}[fragile]
+	\frametitle{Eigene \LaTeX-Befehle}
+	\begin{itemize}
+		\item eigene Befehle können mittels \befehl{newcommand} angelegt werden
+		\item allgemeine Form:
+		\begin{itemize}
+			\item \befehl{newcommand\{befehlsname\}\{definition\}}
+			\item \befehl{newcommand\{befehlsname\}[n]\{definition\}}
+			\item \befehl{newcommand\{befehlsname\}[n][default]\{definition\}}
+		\end{itemize}
+		\begin{center}
+			\begin{tabular}{rl}
+				\emphkeyword{befehlsname} & Name des Befehls (muss mit \textbackslash{} beginnen)\\
+				\emphkeyword{n} & Anzahl der Parameter \\
+				\emphkeyword{default} & Vorgabewert für optionale Parameter\\
+				\emphkeyword{definition} & alles was beim Aufruf ausgeführt werden soll
+			\end{tabular}
+		\end{center}
+		\item mit \befehl{renewcommand} kann ein bereits vorhandener Befehl ersetzt werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Eigene \LaTeX-Befehle -- Beispiel}
+	
+	\latexBeispielDirekt{Eigene \LaTeX-Befehle -- Beispiel}{examples/Eigene_Befehle/Eigene_Befehle}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Eigene \LaTeX-Umgebungen}
+	\begin{itemize}
+		\item eigene Umgebungen können mittels \befehl{newenvironment} angelegt werden
+		\item allgemeine Form:
+		\begin{itemize}
+			\item \befehl{newenvironment\{umgebung\}\{vorher\}\{nachher\}}
+			\item \befehl{newenvironment\{umgebung\}[n]\{vorher\}\{nachher\}}
+			\item \befehl{newenvironment\{umgebung\}[n][default]\{vorher\}\{nachher\}}
+		\end{itemize}
+		\begin{center}
+			\begin{tabular}{rl}
+				\emphkeyword{umgebung} & Name der Umgebung (ohne \textbackslash{}) \\
+				\emphkeyword{n} & Anzahl der Parameter \\
+				\emphkeyword{vorage} & Vorgabewert für optionale Parameter\\
+				\emphkeyword{vorher} & Befehle, die vor Beginn der Umgebung ausgeführt werden\\
+				\emphkeyword{nachher} & Befehle, die nach Ende der Umgebung ausgeführt werden
+			\end{tabular}
+		\end{center}
+		\item mit \befehl{renewenvironment} kann eine bereits vorhandene Umgebung ersetzt werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Eigene \LaTeX-Umgebungen -- Beispiel}
+	
+	\latexBeispielDirekt{Eigene \LaTeX-Umgebungen -- Beispiel}{examples/Eigene_Umgebung/Eigene_Umgebung}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Eigene Zähler}
+\vspace{-1cm}
+	\begin{center}
+		\begin{tabular}{lll}
+			\befehl{newcounter\{zaehler\}} & \multicolumn{2}{l}{neuen Zähler namens \keyword{zaehler} anlegen}\\
+			\befehl{newcounter\{zaehler\}[depend]} & \multicolumn{2}{l}{neuen Zähler namens \keyword{zaehler} anlegen, der bei}\\& \multicolumn{2}{l}{Veränderung von \keyword{depend} zurückgesetzt wird}\\
+			\befehl{stepcounter\{zaehler\}} & \multicolumn{2}{l}{Zähler \keyword{zaehler} um eines erhöhen}\\
+			\befehl{setcounter\{zaehler\}\{wert\}} & \multicolumn{2}{l}{Zähler \keyword{zaehler} auf Wert \keyword{wert} setzen}\\
+			\befehl{addtocounter\{zaehler\}\{wert\}} & \multicolumn{2}{l}{Zähler \keyword{zaehler} um \keyword{wert} erhöhen} \\
+			\befehl{value\{zaehler\}} & \multicolumn{2}{l}{den Wert von \keyword{zaehler} auslesen}\\
+			\befehl{arabic\{zaehler\}} & Ziffer & 1, 2, 3, 4, \dots \\
+			\befehl{roman\{zaehler\}} & Römische Zahl (klein) & i, ii, iii, iv, \dots \\
+			\befehl{Roman\{zaehler\}} & Römische Zahl (groß) \hspace{1cm} & I, II, III, IV, \dots \\
+			\befehl{alph\{zaehler\}} & Kleinbuchstaben & a, b, c, d, \dots \\
+			\befehl{Alph\{zaehler\}} & Großbuchstaben & A, B, C, D, \dots
+		\end{tabular}
+	\end{center}
+\end{frame}
+

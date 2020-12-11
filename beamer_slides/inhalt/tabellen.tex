@@ -1,0 +1,27 @@
+\begin{frame}[fragile]
+	\frametitle{Tabellen - ein einfaches Beispiel}
+	\vspace{-0.9cm}
+	\latexBeispielDirekt{Beispiel: einfache Tabelle}{examples/Tabelle_einfach/Tabelle_einfach}
+	\vfill
+	Tabellenformatierung:\\[0.2cm]
+	\begin{tabular}{rlcrl}
+		\emphkeyword{l} & linksbündig ausrichten &~~~~~~ & \emphkeyword{|} & einfacher vertikaler Trennstrich \\
+		\emphkeyword{c} & zentriert ausrichten && \emphkeyword{||} & doppelter vertikaler Trennstrich\\
+		\emphkeyword{r} & rechtsbündig ausrichten && \emphkeyword{@\{text\}} & benutzerdefiniertes Trennzeichen \\
+		\emphkeyword{p\{n\}} & Spalte mit fester Breite \keyword{n}
+	\end{tabular}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tabellen - mehrspaltige Zellen}
+	\vspace{-0.9cm}
+	\latexBeispielDirekt{Beispiel: mehrspaltige Zellen}{examples/Tabelle_multicolumn/Tabelle_multicolumn}
+	\vfill
+	Tabellenformatierung:\\[0.2cm]
+	\begin{tabular}{rl}
+		\emphkeyword{\textbackslash{}hline} & horizontale Linie über die ganze Breite \\
+		\emphkeyword{\textbackslash{}vline} & vertikaler Line innerhalb einer Zeile \\
+		\emphkeyword{\textbackslash{}cline\{m-n\}} & horizontale Linie von Spalte \keyword{m} bis Spalte \keyword{n}\\
+		\emphkeyword{\textbackslash{}multicolumn\{n\}\{format\}\{Inhalt\}} & Zelle über \keyword{n} Spalten
+	\end{tabular}
+\end{frame}

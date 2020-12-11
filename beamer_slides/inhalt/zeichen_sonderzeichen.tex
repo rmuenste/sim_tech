@@ -1,0 +1,64 @@
+\begin{frame}
+	\frametitle{Spezielle Zeichen}
+	\begin{itemize}
+		\item bei Verwendung des ASCII-Zeichensatzes: Buchstaben ohne Umlaute, Zahlen und einige Sonderzeichen
+		\item manche Zeichen sind \LaTeX-Steuerzeichen und daher reserviert (\$, \_, \{, \},\textbackslash )
+        \item solche Sonderzeichen können durch \textbackslash{} maskiert werden: \\[0.5cm]
+		\begin{center}
+			\begin{tabular}{|cc|cc|} \hline
+				\$ & \textbackslash\$ & \% & \textbackslash\% \\
+				\{ & \textbackslash\{ & \} & \textbackslash\} \\
+				\# & \textbackslash\# & \_ & \textbackslash\_ \\
+				\& & \textbackslash\& & & \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Deutsche Texte - Sprachpakete}
+    Ohne weitere Angaben nimmt \LaTeX{} an, dass der eingegebene Text in englischer Sprache ist. Daher muss ggf. ein zusätzliches Sprachpaket eingebunden werden:
+	\begin{center}
+		\begin{block}{Beispiel-Header: deutsches Sprachpaket}
+			\begin{lstlisting}
+\documentclass[a4paper]{article}      % DIN-A4 Papierformat
+\usepackage[ngerman]{babel}           % deutsche Benennung
+\usepackage[utf8]{inputenc}
+\begin{document}
+  ...
+\end{document}
+			\end{lstlisting}
+		\end{block}
+	\end{center} \vspace{-1cm}
+	\begin{itemize}
+		\item \keyword{babel} sorgt für Unterstützung anderer Sprachen (Formate, Umlaute, Benennungen, Silbentrennung)
+		\item \keyword{inputenc} unterstützt die direkte Eingabe von Zeichen über die Tastatur
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Deutsche Texte -- Umlaute und Anführungszeichen}
+	
+	Eingabe deutscher Texte:
+	\begin{itemize}
+		\item Umlaute: \befehl{"a}, \befehl{"o}, \befehl{"u}, \befehl{ss} für ä, ö, ü, ß
+		\item Anführungszeichen: \befehl{glq}, \befehl{grq} bzw. \befehl{glqq}, \befehl{grqq} für \glq einfache\grq~ bzw. \glqq doppelte\grqq~ Anführungszeichen
+	\end{itemize}
+	\vfill
+	
+	\latexBeispielDirekt{Beispiel: deutsche Umlaute}{examples/Deutsche_Umlaute/Deutsche_Umlaute}
+	\vfill
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Deutsche Texte - Silbentrennung}
+	\begin{itemize}
+		\item erfolgt automatisch
+		\item mögliche Trennstellen können  durch \befehl{-} auch angegeben werden, z. B.\\
+		\lstinline$Donau\-dampf\-schiff\-fahrts\-gesell\-schaft$\\
+		oder für das gesamte Dokument in der Präambel:
+		\lstinline$\hypenation{Donau\-dampf\-schiff\-fahrts\-gesell\-schaft}$
+	\end{itemize}
+
+\end{frame}

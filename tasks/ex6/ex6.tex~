@@ -1,0 +1,29 @@
+\documentclass{book}
+
+\usepackage[ngerman]{babel}
+%\usepackage[utf8]{inputenc}
+
+\usepackage{blindtext}
+
+\begin{document}
+
+\begin{tabular}{r|c|l}
+  rechts & zentriert & links \\ \hline \hline
+  Hier & steht & ganz \\
+  viel & unwichtiger & Text 
+\end{tabular}
+    
+\begin{tabular}{|c|c c c c c c|}
+  \hline
+  $\cdot$ & 1 & 2 & 3 & 4 & x & y \\ \hline 
+  1 & 1 & 2 & 3 & 4 & ? & ? \\  
+  2 & 1 & 2 & 3 & 4 & * & * \\  
+  \cline{6-7}
+  3 & 1 & 2 & 3 & 4 & \multicolumn{2}{|c|}{ ? } \\  
+  \cline{6-7}
+  4 & 1 & 2 & 3 & 4 & 4x & $\vdots$ \\ \hline 
+\end{tabular}
+
+\end{document}
+
+

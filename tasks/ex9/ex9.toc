@@ -1,0 +1,7 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}HelloWorld}{5}
+\contentsline {chapter}{\numberline {2}Erstes Kapitel}{7}
+\contentsline {section}{\numberline {2.1}Ein neues Unterkapitel}{7}
+\contentsline {section}{\numberline {2.2}Und noch eines}{8}
+\contentsline {chapter}{\numberline {3}Stile}{11}
+\contentsline {chapter}{\numberline {4}Umlaute}{13}

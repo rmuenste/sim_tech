@@ -1,0 +1,23 @@
+\begin{frame}[fragile]
+	\frametitle{Gleitende Objekte (Floats)}
+	\begin{itemize}
+		\item gleitende Objekte müssen nicht an der Stelle im Text auftauchen, an der sie definiert wurden
+        \item \LaTeX{} entscheidet ``selbstständig'' wo sie plaziert werden
+		\item Beispielumgebungen (die gleitende Objekte darstellen):
+		\begin{itemize}
+			\item \befehl{begin\{figure\}[htbp] ...}\befehl{end\{figure\}}
+			\item \befehl{begin\{table\}[htbp] ...}\befehl{end\{table\}}
+		\end{itemize}
+		\item optional kann die gewünschte Platzierung angegeben werden:
+		\begin{center}
+			\begin{tabular}{lll}
+				\emphkeyword{h} & \textit{here} & Objekt dort einbauen, wo es definiert wird\\
+				\emphkeyword{t} & \textit{top} & Objekt am Anfang der Seite platzieren \\
+				\emphkeyword{b} & \textit{bottom} & objekt am Ende der Seite platzieren\\
+				\emphkeyword{p} & \textit{page} & Gleitobjekte auf einer Seite sammeln
+			\end{tabular}
+		\end{center}
+		\item zur Beschriftung dient der \befehl{caption}-Befehl
+	\end{itemize}
+\end{frame}
+

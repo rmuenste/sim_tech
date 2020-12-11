@@ -1,0 +1,28 @@
+Erstellen Sie folgende Tabellen:
+	\begin{center}
+		\shadowbox{
+			\begin{minipage}{0.9\textwidth}
+				\begin{center}
+					\begin{tabular}{r|c|l}
+						\textbf{rechts} & \textbf{zentriert} & \textbf{links} \\
+						\hline\hline
+						Hier & steht & ganz \\
+						viel & unwichtiger & Text	
+					\end{tabular}					
+					~~~		
+					\begin{tabular}{|r|*{6}{r}|}
+						\hline
+						$\cdot$ &  1 &  2 &  3 &  4 & $x$ & $y$  \\ \hline
+						1 & 1 & 2 & 3 & 4 & $?$ & $?$ \\
+						2 & 2 & 4 & 6 & 8 & $*$ & $*$ \\
+						\cline{6-7}
+						3 & 3 & 6 & 9 & 12 & \multicolumn{2}{|c|}{?} \\
+						\cline{6-7}
+						4 & 4 & 8 & 12 & 16 & 4$x$ & \vdots \\
+						\hline
+					\end{tabular}
+				\end{center}
+			\end{minipage}
+		}
+	\end{center}
+        Hinweis: $\cdot$ = \verbatim{\\cdot} und $\vdots$ =  \verbatim{\\vdots}

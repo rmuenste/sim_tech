@@ -1,0 +1,31 @@
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Formeln im Fließtext}
+	\begin{itemize}
+        \item Formeln müssen in \LaTeX{} markiert werden, damit sie korrekt interpretiert werden
+		\item im Mathematik-Modus werden Leerzeichen ignoriert und Buchstabenketten als einzelne Zeichen betrachtet
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Formeln im Fließtext}{examples/Formeln_im_Fliesstext/Formeln_im_Fliesstext}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Formeln in eigenem Absatz}
+	\begin{itemize}
+		\item soll eine Formel abgesetzt dargestellt werden, so benutzt man die \keyword{displaymath}-Umgebung oder die Kurzschreibweise \lstinline$\[...\]$
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Formeln in eigenem Absatz}{examples/Formeln_eigener_Absatz/Formeln_eigener_Absatz}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- nummerierte Gleichungen}
+	\begin{itemize}
+		\item Gleichungen können mit der \keyword{equation}-Umgebung automatisch fortlaufend nummeriert werden
+		\item mittels der \keyword{align}-Umgebung können mehrzeilige Formeln nummeriert und ausgerichtet werden
+		\item \befehl{nonumber} unterdrückt in der \keyword{align}-Umgebung die Nummerierung einer Zeile
+	\end{itemize}
+	\vfill
+	\latexBeispielDirektKlein{Beispiel: mehrzeilige Gleichungen}{examples/Formeln_mehrzeilig/Formeln_mehrzeilig}
+\end{frame}
+

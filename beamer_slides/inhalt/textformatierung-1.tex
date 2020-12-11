@@ -1,0 +1,44 @@
+\begin{frame}[fragile]
+	\frametitle{Textformatierung -- Schriftstil}
+	
+	\begin{center}
+		\begin{tabular}{l|ll|l}
+			Familie & \multicolumn{2}{c|}{Befehle} & Beispiel \\ \hline
+			normal (mit Serifen) & \befehl{rmfamily} & \befehl{textr} & \textrm{normal} \\
+			serifenfrei & \befehl{sffamily} & \befehl{textsf} & \textsf{serifenfrei} \\
+			Schreibmaschine & \befehl{ttfamily} & \befehl{texttt} & \texttt{Schreibmaschine} \\
+		\multicolumn{4}{c}{~} \\
+			Varianten & \multicolumn{2}{c|}{Befehle} & Beispiel \\ \hline
+			aufrecht & \befehl{upshape} & \befehl{textup} & \textup{aufrecht} \\
+			italic & \befehl{itshape} & \befehl{textit} & \textit{italic}\\
+			Kapitälchen & \befehl{scshape} & \befehl{textsc} & \textsc{Kapitälchen}\\
+			fett & \befehl{bfseries} & \befehl{textbf} & \textbf{fett}\\
+			unterstrichen & ~ & \befehl{underline} & \underline{unterstrichen}
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Textformatierung -- Schriftgröße}
+	\begin{center}
+		\begin{tabular}{ll}
+		\befehl{tiny} & \tiny{winzig} \\
+		\befehl{small} & \small{klein} \\
+		\befehl{footnotesize} & {\fontsize{14}{14}\selectfont{}Fußnotengröße}\\
+		\befehl{normalsize} & normale Größe\\
+		\befehl{large} & {\fontsize{25}{25}\selectfont{}groß} \\
+		\befehl{Large} & {\fontsize{30}{30}\selectfont{}größer} \\
+		\befehl{huge} & {\fontsize{40}{40}\selectfont{}riesig} \\
+		\befehl{Huge} & {\fontsize{50}{50}\selectfont{}Riesig}
+		\end{tabular}
+	\end{center}
+	\vfill
+	\begin{itemize}
+		\item für einige Wörter: \lstinline${\huge riesig}$
+		\item für ganze Absätze: \lstinline$\begin{tiny} ... \end{tiny}$
+		\item alternativ: punktgenau durch \lstinline${\fontsize{40}{48}\selectfont{}Test}$\\
+		das erste Argument gibt die Schriftgröße an, das zweite den Grundlinienabstand
+	\end{itemize}
+\end{frame}
+
+

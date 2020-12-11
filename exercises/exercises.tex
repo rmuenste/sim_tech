@@ -1,0 +1,95 @@
+\documentclass[fleqn,idxtotoc,bibtotoc,pointlessnumbers,ngerman]{scrartcl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\dozent}{Christopher Basting}
+\newcommand{\veranstaltung}{Einf\"uhrung in \LaTeX}
+\newcommand{\zeitraum}{M\"arz 2017}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+
+%\usepackage{gitinfo}
+\input{sheet.tex}
+\linespread{1.05}
+
+
+
+\excludecomment{loesung}
+%\usepackage{draftwatermark} \SetWatermarkText{\textbf{Alle Angaben ohne Gew\"ahr.}} \SetWatermarkLightness{0.85} \SetWatermarkScale{0.3}
+
+\usepackage{lmodern}
+
+% Einige Befehle (s. Thomas Rohkaemper's Slides)
+\definecolor{darkgray}{gray}{0.3}
+\newcommand{\kommandozeile}[1]{{{\ttfamily\bfseries \color{white}\colorbox{black}{#1}}}}
+\newcommand{\dateiname}[1]{{\ttfamily\bfseries \color{TUgreen}#1}}
+\newcommand{\emphword}[1]{{\color{TUgreen}#1}}
+\newcommand{\keyword}[1]{\texttt{\color{darkgray}#1}}
+\newcommand{\emphkeyword}[1]{\texttt{\color{TUgreen}#1}}
+\newcommand{\befehl}[1]{\texttt{\color{darkgray}\symbol{`\\}#1}}
+\newcommand{\tabitem}{~~\llap{\color{TUgreen}\textbullet}~~}
+
+\usepackage{fancybox, graphicx}
+
+\begin{document}
+\changefont{cmss}{m}{n}
+
+%\blattnonum{\"Ubungsaufgaben}
+
+\begin{aufg}[Hello World!]
+	\input{exercises/hello_world}
+\end{aufg}
+
+\begin{aufg}[Ein erstes eigenes Dokument] \label{aufgabe-hello-world}
+	\input{exercises/ein_erstes_eigenes_dokument}
+\end{aufg}
+
+\begin{aufg}[Umlaute]
+	\input{exercises/umlaute}
+\end{aufg}
+
+\begin{aufg}[Zusammensetzen des Dokuments aus mehreren Dateien] \label{aufgabe-mehrere-dateien}
+	\input{exercises/zusammensetzen}
+\end{aufg}
+
+\begin{aufg}[Listen und Aufzählungen]
+	\input{exercises/listen_und_aufzaehlungen}
+\end{aufg}
+
+\begin{aufg}[Tabellen]
+	\input{exercises/tabellen}
+\end{aufg}
+
+\newpage
+
+\begin{aufg}[Formelsatz]
+	\input{exercises/formelsatz}
+\end{aufg}
+
+\begin{aufg}[Inhaltsverzeichnis und Querverweise] \label{aufgabe-querverweise}
+	\input{exercises/inhaltsverzeichnis_und_querverweise}
+\end{aufg}
+
+\begin{aufg}[Bilder]
+	\input{exercises/bilder}
+\end{aufg}
+
+\begin{aufg}[Präsentationen]
+	\input{exercises/praesentationen}
+\end{aufg}
+
+
+\vfill
+
+\hrule
+\begin{center}
+	Die Präsentation und Übungsaufgaben finden Sie im Moodle-Arbeitsraum der Veranstaltung:\\
+	\href{https://moodle.tu-dortmund.de/course/view.php?id=6103}{https://moodle.tu-dortmund.de/course/view.php?id=6103}
+\end{center}
+%\begin{flushright}
+	%\tiny Revision \texttt{\gitAbbrevHash} (\gitAuthorDate)
+%\end{flushright}
+
+\end{document}
+
+

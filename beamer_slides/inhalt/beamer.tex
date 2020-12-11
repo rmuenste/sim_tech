@@ -1,0 +1,182 @@
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer}
+	\begin{itemize}
+		\item Klasse zur Erstellung von Präsentationen mit \LaTeX
+		\item Benutzerhandbuch zur Klasse:
+		\href{http://ftp.fau.de/ctan/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{http://ftp.fau.de/ctan/macros/latex/contrib/beamer/doc/beameruserguide.pdf} \\[0.5cm]
+		\item Grundkonzept: eine \emphkeyword{frame} entspricht einer Seite (Folie)
+		\item innerhalb der Frames können (fast alle) normalen \LaTeX-Befehle verwendet werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Präambel}
+	\begin{block}{\LaTeX\ Beamer -- Beispiel - Präambel}
+		\begin{lstlisting}
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Luebeck}
+\usecolortheme{orchid}
+\usefonttheme{default}
+\useinnertheme{rounded}
+\useoutertheme{shadow}
+		\end{lstlisting}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{\LaTeX\ Beamer -- Hello World}
+	\latexBeispielDatei{Hello World Frame}{examples/Beamer_HelloWorld/beamer_helloworld}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Frames}
+	
+	\begin{block}{\LaTeX Beamer -- Frames -- Allgemeine Form}
+		\begin{lstlisting}
+\begin{frame}[Overlay][Optionen]{Titel}{Untertitel}
+  Inhalt
+\end {frame}
+		\end{lstlisting}
+	\end{block}
+	\begin{center}
+		\begin{tabular}{rl}
+			\emphkeyword{Overlay} & \keyword{<+->} sorgt dafür, dass Listen schrittweise aufgebaut werden\\
+			\emphkeyword{Optionen} & Anzeigeoptionen für diese Folie (mehrere Optionen müssen\\
+			& durch Kommas abgetrennt werden)\\
+			\emphkeyword{Titel} & Titel der Folie; kann auch mit \befehl{frametitle} gesetzt werden\\
+			\emphkeyword{Untertitel} & Untertitel der Folie; kann auch mit \befehl{framesubtitle}\\
+			& gesetzt werden
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Frames -- Optionen}
+	\begin{center}
+		\begin{tabular}{rl}
+			\emphkeyword{t} & Ausrichtung des Inhalts oben (\textit{top})\\
+			\emphkeyword{c} & Ausrichtung des Inhalts mittig (\textit{center})\\
+			\emphkeyword{b} & Ausrichtung des Inhalts unten (\textit{bottom})\\
+			\emphkeyword{label=name} & Label für die Folie setzen\\
+			\emphkeyword{plain} & Kopf- und Fußzeile unterdrücken\\
+			\emphkeyword{squeeze} & Inhalt zusammenrücken\\
+			\emphkeyword{fragile} & notwendig für Folien mit Quelltext (\keyword{verbatim})
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Blöcke}
+	\begin{block}{Block}
+		erzeugt durch:
+		\begin{lstlisting}
+			\begin{block}{Block}
+			...
+			\end{block}
+		\end{lstlisting}
+	\end{block}
+	\begin{exampleblock}{Beispiel}
+		erzeugt durch \keyword{exampleblock}-Umgebung
+	\end{exampleblock}
+	\begin{alertblock}{Wichtig}
+		erzeugt durch \keyword{alertblock}-Umgebung
+	\end{alertblock}
+	\vfill
+	\begin{itemize}
+		\item nützlich um thematisch zusammenzufassen
+		\item das Aussehen variiert je nach Themenvorlage und eigenen Einstellungen
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Spalten}
+	\vspace{-1cm}
+	\begin{columns}
+		\column{0.5\textwidth}{
+			\begin{block}{Spalte 1}
+				...
+			\end{block}}
+		\column{0.5\textwidth}{\begin{block}{Spalte 2}
+				...
+			\end{block}}
+	\end{columns}
+	\vfill
+	\begin{block}{Quellcode}
+		\begin{lstlisting}
+\begin{columns}
+  \column{0.5\textwidth}{
+    \begin{block}{Spalte 1}
+      ...
+    \end{block}}
+  \column{0.5\textwidth}{
+    \begin{block}{Spalte 2}
+      ...
+    \end{block}}
+\end{columns}
+		\end{lstlisting}
+	\end{block}
+	\begin{itemize}
+		\item auch mehr als zwei Spalten möglich
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Overlays}
+	\begin{itemize}
+		\item Frames können mehrere Overlays enthalten.
+		\item Overlays sorgen dann für das stückweise "Aufbauen" einer Folie.
+		\item Der \LaTeX-Seitenzähler wird dabei angehalten.
+		\item Inhalte können nach und nach Erscheinen oder nur zu bestimmten Zeiten sichtbar sein.
+	\end{itemize}
+	
+	\begin{columns}
+		\column{0.5\textwidth}{
+			\begin{block}{Quelltext}
+				\begin{lstlisting}
+Erster Teil
+\pause \\
+Zweiter Teil
+				\end{lstlisting}
+			\end{block}}
+		\column{0.5\textwidth}{\begin{block}{Vorschau}
+				Erster Teil
+				\pause \\
+				Zweiter Teil
+			\end{block}}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Overlays -- Beispiele Quellcode}
+	\begin{block}{Beispiele für Overlay Steuerung}
+		\begin{lstlisting}
+\begin{itemize}
+  \visible<1>{\item Dieser Text erscheint nur auf Overlay 1.}
+  {\color<1-3>{red}{\item Dieser Text ist auf Overlays 1 bis 3 rot.}}
+  {\color<2->{blue}{\item Dieser Text ist ab Overlay 2 blau.}}
+  \only<-3>{\item Dieser Text erscheint nur bis Overlay 3.}
+  \textbf<1,3,5>{\item Dieser Text erscheint auf Overlays 1, 3 und 5 im Fettdruck.}
+  \alt<2>{\item Dieser Text erscheint nur auf Overlay 2.}{\item Sonst erscheint dieser Text.}
+\end{itemize}
+		\end{lstlisting}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\LaTeX\ Beamer -- Overlays -- Beispiele Quellcode}
+	\begin{flushright}
+		Overlay \only<1>{1}\only<2>{2}\only<3>{3}\only<4>{4}\only<5>{5} / 5
+	\end{flushright}
+	\begin{itemize}
+		\visible<1>{\item Dieser Text erscheint nur auf Overlay 1.}
+		{\color<1-3>{red}{\item Dieser Text ist auf Overlays 1 bis 3 rot.}}
+		{\color<2->{blue}{\item Dieser Text ist ab Overlay 2 blau.}}
+		\only<-3>{\item Dieser Text erscheint nur bis Overlay 3.}
+		\textbf<1,3,5>{\item Dieser Text erscheint auf Overlays 1, 3 und 5 im Fettdruck.}
+		\alt<2>{\item Dieser Text erscheint nur auf Overlay 2.}{\item Sonst erscheint dieser Text.}
+	\end{itemize}
+\end{frame}

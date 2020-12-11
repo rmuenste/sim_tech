@@ -1,0 +1,273 @@
+\documentclass[t]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{upquote}
+
+
+\usepackage{array}
+\usepackage{ragged2e}
+
+\usepackage[ngerman,english]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage{graphicx}
+\usepackage{textpos}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.arrows,calc,decorations.pathmorphing}
+\usetikzlibrary{arrows.meta,shapes.misc}
+\usetikzlibrary{fit}
+
+%%\usepackage{gitinfo}
+\usepackage{shadowtext}
+
+\usetheme{-tud-4-3}
+\newcommand{\titel}{Introduction to ParaView/Matplotlib}
+\newcommand{\titelkurz}{Introduction to ParaView/Matplotlib}
+\newcommand{\vortragender}{Raphael M\"unster}
+\newcommand{\koautoren}{}
+\newcommand{\ortdatum}{\today}
+
+% Title page
+\title[\titelkurz]{\titel}
+\author{Raphael M\"unster}
+\date{\ortdatum\\[-0.2cm]}
+\institute{TU Dortmund}
+
+\include{abbrev}
+
+\shadowoffsetx{0.7pt}
+\shadowoffsety{0.7pt}
+
+
+\newcommand{\itemra}{\item[$\rightarrow$]}
+%\newcommand{\TUgreen}{\color{TUgreen}}
+\newcommand{\TUgreen}{\color{red}}
+\usepackage{hyperref}
+
+\usepackage{listings}
+
+\lstset{breaklines=true,      % sets automatic line breaking
+basicstyle=\ttfamily\LARGE,
+language=TeX,
+escapechar=@
+}
+
+\usepackage{fancybox, graphicx}
+
+\usepackage{lmodern}
+
+% Einige Befehle (s. Thomas Rohkaemper's Slides)
+\definecolor{darkgray}{gray}{0.3}
+\newcommand{\kommandozeile}[1]{{{\ttfamily\bfseries \color{white}\colorbox{black}{#1}}}}
+\newcommand{\dateiname}[1]{{\ttfamily\bfseries \color{red}#1}}
+\newcommand{\emphword}[1]{{\color{red}#1}}
+\newcommand{\keyword}[1]{\texttt{\color{blue}#1}}
+\newcommand{\emphkeyword}[1]{\texttt{\color{red}#1}}
+\newcommand{\befehl}[1]{\texttt{\color{blue}\symbol{`\\}#1}}
+\newcommand{\tabitem}{~~\llap{\color{red}\textbullet}~~}
+
+\newcommand{\latexBeispielDatei}[2]{
+	\begin{columns}[T]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+				\lstinputlisting{#2.tex}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth} \vspace{-2.5cm}
+			\shadowbox{\includegraphics[width=0.9\textwidth]{#2.pdf}}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\latexBeispielDateiCodeAnmerkungen}[3]{
+	\begin{columns}[T]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+				\lstinputlisting{#2.tex}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth}
+			#3
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\latexBeispielDateiKlein}[2]{
+	\begin{columns}[T]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+				\lstinputlisting[basicstyle=\ttfamily\large]{#2.tex}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth} \vspace{-2.5cm}
+			\shadowbox{\includegraphics[width=0.9\textwidth]{#2.pdf}}
+		\end{column}
+	\end{columns}
+}
+
+
+\newcommand{\latexBeispielDirekt}[2]{
+	\begin{columns}[c]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+			\lstinputlisting{#2}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth}
+			\shadowbox{\begin{minipage}{0.99\textwidth} \input{#2} \end{minipage}}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\latexBeispielDirektKlein}[2]{
+	\begin{columns}[c]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+			\lstinputlisting[basicstyle=\ttfamily\large]{#2}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth}
+			\shadowbox{\begin{minipage}{0.99\textwidth} \input{#2} \end{minipage}}
+		\end{column}
+	\end{columns}
+}
+
+\newcommand{\latexBeispielDirektFake}[3]{
+	\begin{columns}[c]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{#1}
+			\lstinputlisting{#2}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth}
+			\shadowbox{\begin{minipage}{0.99\textwidth} #3 \end{minipage}}
+		\end{column}
+	\end{columns}
+}
+
+\begin{document}
+
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% Kopf- und Fußzeile abschalten
+\frame[plain,c]{\titlepage}
+
+% ab jetzt Autoren ohne Unterstreichung des Vortragenden
+\author{\vortragender}
+
+% keine eigene Seite für jede Section einblenden (kann mit \activateOwnSectionPage rückgängig gemacht werden)
+\deactivateOwnSectionPage 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% N O R M A L E   U N I - V E R S I O N
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{inhalt/intro}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 1 (Hello World)}
+%		\input{../exercises/exercises/hello_world}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/zeichen_sonderzeichen}
+%
+%\include{inhalt/textformatierung-1}
+%\include{inhalt/textformatierung-2}
+%%\include{inhalt/struktur}
+%\begin{frame}
+%	\vspace{-1cm}
+%	\begin{block}{\huge Aufgabe 2 (Ein erstes Dokument)}
+%		\input{../exercises/exercises/ein_erstes_eigenes_dokument}
+%	\end{block}
+%	\vfill
+%	\begin{block}{\huge Aufgabe 3 (Umlaute)}
+%		\input{../exercises/exercises/umlaute}
+%	\end{block}
+%\end{frame}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 4 (Zusammensetzen des Dokuments aus mehreren Dateien)}
+%		\input{../exercises/exercises/zusammensetzen}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/aufzaehlungen}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 5 (Listen und Aufzählungen)}
+%		\input{../exercises/exercises/listen_und_aufzaehlungen}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/tabellen}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 6 (Tabellen)}
+%		\input{../exercises/exercises/tabellen}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/mathematik-1}
+%\include{inhalt/mathematik-2}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 7 (Formelsatz)}
+%		\large
+%		\input{../exercises/exercises/formelsatz}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/grafiken}
+%\include{inhalt/spezielles_gleitende_objekte}
+%\include{inhalt/spezielles_verzeichnis_ausgeben}
+%\include{inhalt/spezielles_querverweise}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 8 (Inhaltsverzeichnis und Querverweise)}
+%		\input{../exercises/exercises/inhaltsverzeichnis_und_querverweise}
+%	\end{block}
+%	\begin{block}{\huge Aufgabe 9 (Bilder)}
+%		\input{../exercises/exercises/bilder}
+%	\end{block}
+%\end{frame}
+%\include{inhalt/spezielles_eigene_befehle_umgebungen}
+%\include{inhalt/spezielles_zaehler_laengen}
+%\include{inhalt/spezielles_theoreme}
+%\include{inhalt/bibliographie}
+%\include{inhalt/beamer}
+%\begin{frame}
+%	\begin{block}{\huge Aufgabe 10 (Präsentationen)}
+%		\input{../exercises/exercises/praesentationen}
+%	\end{block}
+%\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% S C H Ü L E R - V E R S I O N
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{inhalt/intro}
+%\include{inhalt/zeichen_sonderzeichen}
+%\include{inhalt/textformatierung-1}
+%\include{inhalt/aufzaehlungen}
+%\include{inhalt/mathematik-1}
+\begin{frame}
+  \frametitle{Happy ParaViewing}
+
+    \includegraphics[width=0.9\textwidth]{screenshots/paraviewing.png}
+
+\end{frame}
+
+\end{document}
+
+%\begin{frame}
+%	\frametitle{Literaturangaben}
+%	\begin{itemize}
+%		\item Thomas Rohkämper (TU Dortmund): \textit{Einführung in \LaTeX}, Sommersemester 2014
+%		\begin{itemize}
+%			\item Deutschsprachige Anwendervereinigung TeX e. V.\\
+%			\href{http://www.dante.de}{http://www.dante.de}
+%			\item Helmut Kopka. \textit{LATEX, Bd. 1: Einführung}. Pearson Studium, 2003.
+%			\item Joachim Schlosser. \textit{Wissenschaftliche Arbeiten schreiben mit \LaTeX: Leitfaden für Einsteiger}. mitp, 2009.
+%            \item Petra Schlager und Manfred Thibud. \textit{Wissenschaftlich mit \LaTeX{} arbeiten}. Pearson Studium, 2005.
+%			\item Wikibooks: LaTeX\\
+%			\href{http://en.wikibooks.org/wiki/LaTeX}{http://en.wikibooks.org/wiki/LaTeX}
+%		\end{itemize}
+%    \item Thomas Rohkämper (TU Dortmund): \textit{Einführung in \LaTeX{} -- Präsentationen mit \textit{beamer}}, Sommersemester 2014
+%	\end{itemize}
+%\end{frame}
+%
+%\end{document}

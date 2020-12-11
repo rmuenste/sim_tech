@@ -1,0 +1,146 @@
+%-------------------------------------------------------------------------------
+% Inner theme file
+%-------------------------------------------------------------------------------
+
+\mode<presentation>
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titelseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{title page}
+{%
+\setlength{\unitlength}{1mm}
+\begin{picture}(254,190.5)(17.4,0) % Ursprung (0,0) minus linke Marginalie
+  % Hintergrundbild Schloss
+  %\put(0,55.4){%
+  %  \pgfuseimage{tudschloss}
+  %}
+
+  % Trennbalken
+  \put(0,35.4){\color{TUgreen}\rule{1.5\paperwidth}{4mm}}
+  % Titel tud
+  \put(12.4,120.7){%
+    \begin{minipage}[b][45mm][t]{226mm}
+        \usebeamerfont{title}{\shadowtext{\inserttitle}\par}
+    \end{minipage}
+  }
+  % Autor, Datum, etc
+  \put(17.4,86){%
+    \begin{minipage}[b][30mm][b]{113mm}
+      \fontsize{22}{26}\selectfont % Schriftgroesse und Zeilenabstand
+	  \ifx\insertauthor\empty\else
+        \insertauthor
+	  \fi
+	  \ifx\insertdate\empty\else
+      \newline\vspace{1cm}\insertdate
+      \fi
+      \ifx\insertinstitute\empty\else
+	    \newline\insertinstitute
+	  \fi
+    \end{minipage}
+  }
+
+  % Logo-Box mit Department-Logo
+    \put(180,0){%
+    \begin{minipage}[b][37.5mm][c]{29.95mm}
+      \raggedleft % Ausrichtung am linken Rand
+      \pgfuseimage{deplogo}
+    \end{minipage}
+  }
+
+  % Logo-Box mit TUD-Logo
+  \put(18,0){%
+    \begin{minipage}[b][37.5mm][c]{29.95mm}
+      \raggedleft % Ausrichtung am linken Rand
+      \pgfuseimage{tudlogo}
+    \end{minipage}
+  }
+
+%  \put(199,0){
+%    \begin{minipage}{6cm}
+%      \raggedright % Ausrichtung am rechten Rand
+%      \color{black}
+%      \begin{flushright}
+%      \fontsize{8}{10}\selectfont % Schriftgroesse und Zeilenabstand
+%GIT Revision \gitAbbrevHash ~(\gitAuthorDate)
+%    \end{flushright}
+%    \end{minipage}}
+\end{picture}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Titelseite Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Section-Seite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\deactivateOwnSectionPage}{\AtBeginSection{}}
+\newcommand{\activateOwnSectionPage}{\AtBeginSection{%
+  \frame[plain,c]{%
+    \setlength{\unitlength}{1mm}
+    \begin{picture}(254,190.5)(17.4,0) % Ursprung (0,0) minus linke Marginalie
+      % Hintergrundbild Schloss abgeschnitten
+      \put(0,135.1){%
+        \pgfuseimage{tudschlosscropped}
+      }
+      % Trennbalken
+      %\put(0,135.1){\color{TUgreen}\rule{\paperwidth}{4mm}}
+      % Titel der Section
+      \put(17.4,75.3){%
+        \begin{minipage}[b][25mm][t]{226mm}
+          \fontsize{28}{34}\selectfont % Schriftgroesse und Zeilenabstand
+          \color{TUgreen}
+          \bfseries % fett
+          \insertsection
+        \end{minipage}
+      }
+      % Projekt-/Lehrstuhl-Box
+      \put(17.4,0){%
+        \color{black}
+        \begin{minipage}[b][37.5mm][c]{125.45mm}
+          %\raggedleft % Ausrichtung am rechten Rand
+          \raggedright % Ausrichtung am rechten Rand
+          \color{black}
+          \fontsize{16}{20}\selectfont % Schriftgroesse und Zeilenabstand
+          \usebeamertemplate{projectbox}
+        \end{minipage}
+      }
+  	   % Logo-Box mit tud-Logo
+       \put(153.45,0){%
+         \begin{minipage}[b][37.5mm][c]{89.95mm}
+           \raggedleft % Ausrichtung am rechten Rand
+           \pgfuseimage{tudlogo}
+         \end{minipage}
+     }
+
+
+
+    \end{picture}
+  }% end frame
+}}
+\activateOwnSectionPage
+%%%%%%%%%%%%%%%%%%%%%%%%%% Section-Seite Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% Aufzaehlungen und Listen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enumerate item
+%\setbeamertemplate{enumerate item}{circle}{\Large}
+\setbeamertemplate{enumerate item}{%
+  \usebeamercolor[bg]{item projected}%
+  \raisebox{2.5pt}{\colorbox{bg}{\color{fg}\large\insertenumlabel}}%
+}
+\setbeamertemplate{enumerate subitem}{%
+  \usebeamercolor[bg]{item projected}%
+  \raisebox{2.5pt}{\colorbox{bg}{\color{fg}\large\insertenumlabel}}%
+}
+\setbeamertemplate{enumerate subsubitem}{%
+  \usebeamercolor[bg]{item projected}%
+  \raisebox{2.5pt}{\colorbox{bg}{\color{fg}\large\insertenumlabel}}%
+}
+
+% Itemize item
+\newcommand{\localtextbulletone}{\textcolor{fg}{\raisebox{2.5pt}{\rule{1.2ex}{1.2ex}}}}
+\setbeamertemplate{itemize item}{\localtextbulletone}
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{itemize subsubitem}[square]
+%%%%%%%%%%%%%%%%%%%%%% Aufzaehlungen und Listen Ende %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mode
+<all>

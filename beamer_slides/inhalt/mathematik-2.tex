@@ -1,0 +1,391 @@
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Unterschiede bei der Darstellung}
+	\begin{itemize}
+		\item Formeln werden innerhalb der \keyword{math}-Umgebung anders dargestellt als in der \keyword{displaymath}-Umgebung
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{c|c|c}
+			\LaTeX-Befehl & \keyword{math} & \keyword{displaymath} \\ \hline
+			\lstinline$\lim_{x \ra \infty} \ra 0$
+			&
+			\begin{math}
+				\lim_{x \to \infty} \ra 0
+			\end{math}
+			&\begin{minipage}{4cm}
+				\begin{displaymath}
+					\lim_{x \ra \infty} \ra 0
+				\end{displaymath}
+			\end{minipage}
+		\end{tabular}
+	\end{center}
+	\begin{itemize}
+		\item mit dem Befehl \befehl{displaystyle} bzw. \befehl{textstyle} kann das jeweils andere Verhalten erzwungen werden
+	\end{itemize}
+	\latexBeispielDirekt{Beispiel: \keyword{textstyle} und \keyword{displaystyle}}{examples/Formeln_Darstellung/Formeln_Darstellung}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- Symbole}
+	
+	\emphword{Logik}
+	\begin{center}
+		\begin{tabular}{ll|ll|ll|ll|ll}
+			\befehl{exists} & $\exists$ & \befehl{forall} & $\forall$ & \befehl{neg} & $\neq$ & \befehl{in} & $\in$ & \befehl{emptyset} & $\emptyset$ \\
+			\befehl{notin} & $\notin$ & \befehl{ni} & $\ni$ & \befehl{land} & $\land$ & \befehl{lor} & $\lor$ & \befehl{varnothing} & $\varnothing$\\
+			\befehl{setminus} & $\setminus$ & \befehl{implies} & $\implies$ & \befehl{iff} & $\iff$ & \befehl{to} & $\to$ & \befehl{top} & $\top$
+		\end{tabular}
+	\end{center}\vspace{1cm}
+	
+	\emphword{Pfeile} \vspace{-0.9cm}
+	\begin{center}
+		\begin{tabular}{ll|ll|ll|ll}
+			\befehl{leftarrow} & $\la$ & \befehl{rightarrow} & $\ra$ & \befehl{uparrow} & $\uparrow$ & \befehl{downarrow} & $\downarrow$ \\
+			\befehl{Leftarrow} & $\La$ & \befehl{Rightarrow} & $\Ra$ & \befehl{Uparrow} & $\Uparrow$ & \befehl{Downarrow} & $\Downarrow$ \\
+			\befehl{leftrightarrow} & $\leftrightarrow$ & \befehl{Leftrightarrow} & $\Leftrightarrow$ & \befehl{nearrow} & $\nearrow$ & \befehl{searrow} & $\searrow$ \\
+			 \befehl{updownarrow} & $\updownarrow$ & \befehl{Updownarrow} & $\Updownarrow$ & \befehl{swarrow} & $\swarrow$ & \befehl{nwarrow} & $\nwarrow$ \\
+			 \befehl{longleftarrow} & $\longleftarrow$ & \befehl{Longleftarrow} & $\Longleftarrow$ & \befehl{mapsto} & $\mapsto$ & \befehl{leadsto} & $\leadsto$ \\
+			 \befehl{longrightarrow} & $\longrightarrow$ & \befehl{Longrightarrow} & $\Longrightarrow$
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- Symbole}
+	\emphword{Sonstige}
+	\begin{center}
+		\begin{tabular}{ll|ll|ll|ll|ll}
+			\befehl{partial} & $\partial$ & \befehl{nabla} & $\nabla$ & \befehl{infty} & $\infty$ & \befehl{ell} & $\ell$ & \befehl{imath} & $\imath$ \\
+			\befehl{jmath} & $\jmath$ & \befehl{Re} & $\Re$ & \befehl{Im} & $\Im$ & \befehl{dots} & $\dots$ & \befehl{cdots} & $\cdots$ \\
+			\befehl{vdots} & $\vdots$ & \befehl{ddots} & $\ddots$ & \befehl{ldots} & $\ldots$ & \befehl{pm} & $\pm$ & \befehl{mp} & $\mp$
+		\end{tabular}
+	\end{center} \vspace{1cm}
+	
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Mathematik -- Griechische Buchstaben}
+	\vspace{-0.5cm}
+	\begin{center}
+\begin{tabular}{ll|ll||ll}
+\befehl{alpha}      & $\alpha$  & 
+\befehl{xi}         & $\xi$ &
+\befehl{Gamma}      & $\Gamma$ \\
+
+\befehl{beta}       & $\beta$  & 
+\befehl{pi}         & $\pi$ &
+\befehl{Delta}      & $\Delta$ \\
+
+\befehl{gamma}      & $\gamma$  & 
+\befehl{varpi}      & $\varpi$ &
+\befehl{Theta}      & $\Theta$ \\
+
+\befehl{delta}      & $\delta$  & 
+\befehl{rho}        & $\rho$ &
+\befehl{Lambda}     & $\lambda$ \\
+
+\befehl{epsilon}    & $\epsilon$  & 
+\befehl{varrho}     & $\varrho$ &
+\befehl{Xi}         & $\Xi$ \\
+
+\befehl{varepsilon} & $\varepsilon$  & 
+\befehl{sigma}      & $\sigma$ &
+\befehl{Pi}         & $\Pi$ \\
+
+\befehl{zeta}       & $\zeta$  & 
+\befehl{varsigma}   & $\varsigma$ &
+\befehl{Sigma}      & $\Sigma$ \\
+
+\befehl{eta}        & $\eta$  & 
+\befehl{tau}        & $\tau$ &
+\befehl{Upsilon}    & $\Upsilon$ \\
+
+\befehl{theta}      & $\theta$  & 
+\befehl{upsilon}    & $\upsilon$ &
+\befehl{Phi}        & $\Phi$ \\
+
+\befehl{vartheta}   & $\vartheta$  & 
+\befehl{phi}        & $\phi$ &
+\befehl{Psi}        & $\Psi$ \\
+
+\befehl{iota}       & $\iota$  & 
+\befehl{varphi}     & $\varphi$ &
+\befehl{Omega}      & $\Omega$ \\
+
+\befehl{kappa}      & $\kappa$  & 
+\befehl{chi}        & $\chi$ \\
+
+\befehl{lambda}     & $\lambda$  & 
+\befehl{psi}        & $\psi$ &
+                & \\
+
+\befehl{mu}         & $\mu$  & 
+\befehl{omega}      & $\omega$ &
+                & \\
+
+\befehl{nu}         & $\nu$ &
+                &       &
+                & \\
+
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- binäre Operatoren}
+	\begin{center}
+\begin{tabular}{ll|ll|ll}
+\befehl{leq} & $\leq$ &
+\befehl{geq} & $\geq$ &
+\befehl{equiv} & $\equiv$
+\\
+\befehl{models} & $\models$ &
+\befehl{prec} & $\prec$ &
+\befehl{succ} & $\succ$
+\\
+\befehl{sim} & $\sim$ &
+\befehl{perp} & $\perp$ &
+\befehl{preceq} & $\preceq$
+\\
+\befehl{succeq} & $\succeq$ &
+\befehl{simeq} & $\simeq$ &
+\befehl{mid} & $\mid$
+\\
+\befehl{ll} & $\ll$ &
+\befehl{gg} & $\gg$ &
+\befehl{asymp} & $\asymp$ 
+\\
+\befehl{parallel} & $\parallel$ &
+\befehl{subset} & $\subset$ &
+\befehl{supset} & $\supset$
+\\
+\befehl{approx} & $\approx$ &
+\befehl{bowtie} & $\bowtie$ &
+\befehl{subseteq} & $\subseteq$
+\\
+\befehl{supseteq} & $\supseteq$ &
+\befehl{cong} & $\cong$ &
+\befehl{sqsubset} & $\sqsubset$
+\\
+\befehl{sqsupset} & $\sqsupset$ &
+\befehl{neq} & $\neq$ &
+\befehl{smile} & $\smile$
+\\
+\befehl{sqsubseteq} & $\sqsubseteq$ &
+\befehl{sqsupseteq} & $\sqsupseteq$ &
+\befehl{doteq} & $\doteq$
+\\
+\befehl{frown} & $\frown$ &
+\befehl{in} & $\in$ &
+\befehl{ni} & $\ni$
+\\
+\befehl{propto} & $\propto$ &
+= & $=$ &
+\befehl{vdash} & $\vdash$
+\\
+\befehl{dashv} & $\dashv$ &
+< & $<$ &
+> & $>$
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- Negation von Operatoren}
+	\begin{itemize}
+		\item oftmals kann ein Operator negiert werden, indem der Befehl \befehl{not} vorgestellt wird
+		\begin{center}
+			\begin{tabular}{ll|ll|ll}
+				\befehl{not<} & $\not<$ & \befehl{not}\befehl{leq} & $\not\leq$ & \befehl{not}\befehl{subseteq} $\not\subseteq$
+			\end{tabular}
+		\end{center}
+		\item einige Operatoren haben dafür jedoch spezielle Symbole
+		\begin{center}
+			\begin{tabular}{ll|ll}
+				\befehl{not=} & $\not=$ & \befehl{neq} & $\neq$ \\
+				\befehl{not}\befehl{in} & $\not\in$ & \befehl{notin} & $\notin$
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik  -- gestapelte Operatoren}
+	\begin{itemize}
+		\item manchmal werden Anmerkungen an Relationen geschrieben oder eigene Operatoren definiert
+		\item dazu eignet sich der \befehl{stackrel} Befehl
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: \befehl{stackrel} Befehl}{examples/Mathematik_stackrel/Mathematik_stackrel}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- Funktionen}
+	\begin{center}
+\begin{tabular}{lllll}
+\befehl{arccos} \quad &
+\befehl{arcsin} \quad &
+\befehl{arctan} \quad &
+\befehl{arg} \quad &
+\befehl{cos} \\[0.5cm]
+\befehl{cosh} &
+\befehl{cot} &
+\befehl{coth} &
+\befehl{csc} &
+\befehl{deg} \\[0.5cm]
+\befehl{det} &
+\befehl{dim} &
+\befehl{exp} &
+\befehl{gcd} &
+\befehl{hom} \\[0.5cm]
+\befehl{inf} &
+\befehl{ker} &
+\befehl{lg} &
+\befehl{lim} &
+\befehl{liminf} \\[0.5cm]
+\befehl{limsup} &
+\befehl{ln} &
+\befehl{log} &
+\befehl{max} &
+\befehl{min} \\[0.5cm]
+\befehl{Pr} &
+\befehl{sec} &
+\befehl{sin} &
+\befehl{sinh} &
+\befehl{sup} \\[0.5cm]
+\befehl{tan} &
+\befehl{tanh} &
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mathematik -- Hoch- und Tiefstellung}
+	\begin{itemize}
+		\item um Exponenten oder Indizes anzugeben, benutzt man zur Hochstellung das Zeichen \lstinline$^$ und zur Tiefstellung das Zeichen \lstinline$_$
+		\item möchte man mehr als ein Zeichen hoch- oder tiefstellen, muss man den Term in geschweiften Klammern angeben
+		\item die Reihenfolge ist egal
+		\item mit den Befehlen \befehl{limits} und \befehl{nolimits} kann man die Darstellung für das Hoch- bzw. Tiefstellen beinflussen
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Hoch- und Tiefstellung}{examples/Mathematik_HochTief/Mathematik_HochTief}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Brüche}
+	\begin{itemize}
+		\item der \befehl{frac} Befehl dient der Darstellung von Brüchen und erfordert zwei Argumente
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Brüche}{examples/Mathematik_frac/Mathematik_frac}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Wurzel und Binomialkoeffizient}
+	\emphword{Wurzel}
+	\begin{itemize}
+		\item der Wurzelbefehl heißt \befehl{sqrt}
+		\item optional kann der Parameter \keyword{n} angeben werden ($n = 2$:  Quadratwurzel)
+	\end{itemize}
+	\vfill
+	\emphword{Binomialkoeffizient}
+	\begin{itemize}
+		\item zur Darstellung des Binomialkoeffizienten dient der Befehl \befehl{choose}
+		\item das erste Argument wird oben, das zweite unten gesetzt
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Wurzeln, Binomialkoeffizienten}{examples/Mathematik_Wurzel_Binom/Mathematik_Wurzel_Binom}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Klammerung} \vspace{-0.6cm}
+	\begin{itemize}
+		\item Klammern: \keyword{() [] \{\} ||} \befehl{langle}\befehl{rangle} \befehl{lfloor}\befehl{rfloor} \befehl{lceil}\befehl{rceil}
+			\[ (\,) \quad [\,] \quad \{\,\} \quad |\,| \quad \langle \, \rangle \quad \lfloor \, \rfloor \quad \, \lceil \, \rceil \]
+		\item die Größe der Klammern kann manuell durch die Befehle \befehl{big}, \befehl{Big}, \befehl{bigg}, \befehl{Bigg} variert werden
+			\[ ( \big( \Big( \bigg( \Bigg( \, \Bigg) \bigg) \Big) \big) ) \]
+		\item besser: die Klammergröße kann automatisch gesetzt werden
+		\item dazu setzt man den einzuklammernden Begriff zwischen die Befehle \befehl{left} und \befehl{right}; direkt darauf folgt das zu verwendende Klammerzeichen\\
+		\item möchte man auf einer Seite keine Klammern haben, verwendet man als Klammerzeichen \keyword{.} (Punkt)
+		\item Beispiel: \lstinline$\left\{ 1 - \left| \frac{1}{2} \right| \dots \right.$
+		\[
+			\left\{ 1 - \left| \frac{1}{2} \right| \dots \right.
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Matrizen}
+	\begin{itemize}
+		\item die \keyword{array}-Umgebung entspricht der \keyword{tabular}-Umgebung im Mathematik-Modus
+		\item die Inhalte der Zellen sind automatisch im Mathematik-Modus gesetzt
+		\item bekannte Befehle für Tabellen (z. B. \befehl{multicolumn}, \befehl{hline}, \dots) können verwendet werden
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Matrizen}{examples/Mathematik_Matrix/Mathematik_Matrix}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Fallunterscheidungen}
+	\begin{itemize}
+		\item für Fallunterscheidungen steht die \keyword{cases}-Umgebung zur Verfügung
+		\item kann auch mittels Klammerung und der \keyword{array}-Umgebung selbst erstellt bzw. individualisiert werden
+	\end{itemize}
+	\vfill
+	\latexBeispielDirekt{Beispiel: Fallunterscheidungen}{examples/Mathematik_cases/Mathematik_cases}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Schriftgröße}
+	\begin{itemize}
+		\item die Schriftgröße kann im Mathematik-Modus durch folgende Befehl geändert werden:
+		\begin{center}
+			\begin{tabular}{ll}
+				\befehl{displaystyle} & $\displaystyle \frac{1}{2}$ \\[0.5cm]
+				\befehl{textstyle} & $\textstyle \frac{1}{2}$ \\[0.5cm]
+				\befehl{scriptstyle} & $\scriptstyle \frac{1}{2}$
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- Akzente}
+	\begin{center}
+		\begin{tabular}{ll|ll|ll}
+			\verb|a'| & $a'$ &
+			\verb|a''| & $a''$ &
+			\verb|a'''| & $a'''$ \\
+			\verb|\bar{a}| & $\bar{a}$ &
+			\verb|\overline{a}| & $\overline{a}$ &
+			\verb|\underline{a}| & $\underline{a}$ \\
+			\verb|\hat{a}| & $\hat{a}$ &
+			\verb|\widehat{ab}| & $\widehat{ab}$ &
+			\verb|\check{a}| & $\check{a}$ \\
+			\verb|\tilde{a}| & $\tilde{a}$ &
+			\verb|\widetilde{ab}| & $\widetilde{ab}$ &
+			\verb|\vec{a}| & $\vec{a}$ \\
+			\verb|\dot{a}| & $\dot{a}$ &
+			\verb|\ddot{a}| & $\ddot{a}$
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Mathematik -- horizontale Abstände}
+	\begin{center}
+		\begin{tabular}{l|c|l}
+		Befehl & Breite & Beschreibung\\ \hline
+			\verb|\qquad| & $\overline{\qquad}$ & $2\times$ quad \\
+			\verb|\quad| & $\overline{\quad}$ & so breit wie ein Zeichen hoch ist \\
+			\textvisiblespace~ (Leerzeichen)          & $\overline{~}$ & Zeichenabstand \\
+			\verb|\,| & $\overline{\,}$ & $\frac{3}{18} \times$ quad \\
+			\verb|\:| & $\overline{\:}$ & $\frac{4}{18} \times$ quad \\
+			\verb|\;| & $\overline{\;}$ & $\frac{4}{18} \times$ quad \\
+			\verb|\!| & $\overline{\,}$ & $-\frac{3}{18} \times$ quad \\
+		\end{tabular}
+	\end{center}
+	\vfill
+	\latexBeispielDirekt{Beispiel: horizontaler Abstand}{examples/Mathematik_H_Abstand/Mathematik_H_Abstand}
+\end{frame}

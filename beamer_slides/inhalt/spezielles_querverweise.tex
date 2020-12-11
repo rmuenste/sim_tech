@@ -1,0 +1,44 @@
+\begin{frame}[fragile]
+	\frametitle{Querverweise}
+	\begin{itemize}
+		\item Befehle zur Benutzung von Querverweisen:
+		\begin{center}
+			\begin{tabular}{ll}
+				\befehl{label\{marker\}} & Verbindet die momentane Textstelle mit \keyword{marker}. So kann\\
+				& von einer anderen Textstelle aus auf diese Stelle verwiesen\\
+				& werden.\\[0.5cm]
+				\befehl{ref\{marker\}} & Erzeugt einen Querverweis auf eine Stelle, die zuvor mittels\\
+				& \keyword{label} gekennzeichnet wurde. Der Querverweis gibt die\\
+				& Gliederungsnummer der betreffenden Textstelle an.\\[0.5cm]
+				\befehl{pageref\{marker\}} & Wie \befehl{ref}, gibt jedoch die Seitennummer der Textstelle\\
+				& zurück.
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Querverweise}
+	\begin{itemize}
+		\item Durch ein Präfix (optional) kann angegeben werden, was referenziert wird, z. B.:\\
+		\befehl{label\{sec:Querverweise\}}
+		\item mögliche Präfixe sind:
+		\begin{center}
+			\begin{tabular}{rl}
+				\emphkeyword{chap} & chapter\\
+				\emphkeyword{sec} &  section\\
+				\emphkeyword{fig} & figure\\
+				\emphkeyword{tab} & table\\
+				\emphkeyword{eq} & equation\\
+				\emphkeyword{lst} & listing
+			\end{tabular}
+		\end{center}
+		\item in \keyword{figure}- und \keyword{table}-Umgebung muss das Label innerhalb des \befehl{caption}-Befehls gesetzt werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Querverweise -- Beispiel}
+	
+	\latexBeispielDirekt{Querverweise -- Beispiel}{examples/Querverweise/Querverweise.tex}
+\end{frame}

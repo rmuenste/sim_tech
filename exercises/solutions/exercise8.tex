@@ -1,0 +1,33 @@
+\documentclass{book}
+
+% deutsche Rechtschreibung
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+% Pakete für Test-Text-Erzeugung
+\usepackage{blindtext}
+
+% Grafiken einbinden
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Ein kleiner \LaTeX-Test}
+\author{Polly~Morph}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\input{exercise7/exercise7-kapitel1}
+\input{exercise7/exercise7-kapitel2}
+
+\newpage
+\LaTeX-Kurs September 2014 an der
+\begin{figure}[h!]
+	\includegraphics[width=6cm]{exercise8/tud.pdf}
+	\caption{TU Dortmund}
+\end{figure}
+
+\end{document}

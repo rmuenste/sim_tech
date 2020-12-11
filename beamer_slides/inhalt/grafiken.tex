@@ -1,0 +1,32 @@
+\begin{frame}[fragile]
+	\frametitle{Grafiken}
+	\begin{itemize}
+		\item Grafiken können mit dem Befehl \befehl{includegraphics} eingebunden werden
+		\item dieser benötigt das Paket \keyword{graphicx}, dass in der Präambel geladen werden muss:\\
+		\lstinline$\usepackage{graphicx}$
+		\item benutzt man \keyword{pdflatex} zum Kompilieren des Dokuments, so müssen die verwendeten Grafiken in PDF- oder Bitmap-Grafiken umgewandelt werden
+		\item alternativ kann man auch das Paket \keyword{epstopdf} verwendet, dann muss \keyword{pdflatex} aber so gestartet werden:\\
+		\kommandozeile{pdflatex --shell-escape}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Grafiken -- Beispiel} \vspace{-0.5cm}
+	\latexBeispielDirekt{Beispiel: \befehl{includegraphics}}{examples/Grafiken_Beispiel/Grafiken_Beispiel} \par \vspace{1cm}
+	\emphword{Optionale Parameter}
+	\begin{center}
+		\begin{tabular}{ll}
+			\keyword{width=b} & Breite vorgeben  (z. B. in \keyword{cm})\\
+			\keyword{height=h} & Höhe vorgeben (z. B. in \keyword{cm})\\
+			\keyword{keepaspectratio=k} & Seitenverhältnis beibehalten (\keyword{true} oder \keyword{false}) \\
+			\keyword{scale=s} & skalieren  (Skalierungsfaktor angeben)\\
+			\keyword{angle=a} & rotieren (Winkel in Grad angeben) \\
+			\keyword{trim=l b r t} & Bild zuschneiden
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Grafiken -- \keyword{picture}-Umgebung}
+	\latexBeispielDirektKlein{Beispiel: \keyword{picture}-Umgebung}{examples/Grafiken_pictures/Grafiken_pictures}
+\end{frame}

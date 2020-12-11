@@ -1,0 +1,34 @@
+\documentclass{book}
+
+% deutsche Rechtschreibung
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+% Pakete für Test-Text-Erzeugung
+\usepackage{blindtext}
+
+\begin{document}
+
+\title{Ein kleiner \LaTeX-Test}
+\author{Polly~Morph}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Erstes Kapitel}
+Später wird die Gleichung (\ref{gleichung}) auf Seite \pageref{gleichung} noch gebraucht.
+\section{Ein neuer Abschnitt}
+\blindtext[5]
+\section{und noch mehr...}
+\blindtext[2]
+\chapter{Text hervorheben}
+kursiver Text: \textit{kursiv}\\
+Fettdruck: \textbf{Fettdruck}\\
+Schreibmaschinen-Schrift: \texttt{Schreibmaschinenschrift}
+\begin{equation} \label{gleichung}
+	a^2 + b^2 = c^2
+\end{equation}
+
+\end{document}

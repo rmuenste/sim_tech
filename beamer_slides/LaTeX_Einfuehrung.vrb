@@ -1,0 +1,43 @@
+\frametitle{Filter Pipeline Concept}
+
+    \begin{minipage}{0.45 \textwidth}
+
+      \begin{tikzpicture}%[nodes=draw]
+
+    \node[text width=8cm] (C1) at (-8, 1.25) {
+      \begin{block}{Filter Pipeline}
+        \begin{itemize}
+          \item A \keyword{filter} is an operation on an input data set
+          \item Filters can be chained (pipelined)
+          \item More complex visualizations require multiple filters
+        \end{itemize}
+      \end{block}
+    };
+
+    \node[align=center,scale=0.5,transform shape] (C1) at (-10,-5.0)
+    {\includegraphics{screenshots/filters.png}};
+
+    \end{tikzpicture}
+
+    \end{minipage}
+    \begin{minipage}{0.45 \textwidth}
+      \begin{center}
+        \begin{tikzpicture}%[nodes=draw]
+
+          \node[align=center,scale=0.189,transform shape] (C1) at (10,-1)
+          {\includegraphics{screenshots/begin-filter.png}};
+
+            \node [scale=2.8,
+            fill=TUgreen,
+            single arrow,
+            rotate=270,
+            font=\sffamily
+            ] at (10.0,-4.22)
+            {\rotatebox{270}{}};
+
+          \node[align=center,scale=0.8,transform shape] (C2) at (10,-8)
+          {\includegraphics{screenshots/end-filter.png}};
+
+        \end{tikzpicture}
+      \end{center}
+    \end{minipage}

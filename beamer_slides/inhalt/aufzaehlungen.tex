@@ -1,0 +1,61 @@
+\begin{frame}[fragile]
+	\frametitle{Aufzählungen}
+	\vspace{-0.5cm}
+	drei Grundarten von Aufzählungen: \\
+	\begin{tabular}{rl}
+		\emphkeyword{itemize} & einfache Aufzählung\\
+		\emphkeyword{enumerate} & nummerierte Aufzählung\\
+		\emphkeyword{description} & Beschreibung
+	\end{tabular}\par \vfill
+	
+	\begin{columns}[T]
+		\begin{column}{0.31\textwidth}
+			\begin{block}{\tt\bfseries itemize}
+				\begin{itemize}
+					\item A \item B \item C
+				\end{itemize} 
+				\begin{lstlisting}
+\begin{itemize}
+  \item A
+  \item B
+  \item C
+\end{itemize}
+				\end{lstlisting}
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{\tt\bfseries enumerate}
+				\begin{enumerate}
+					\item A \item B \item C
+				\end{enumerate} 
+				\begin{lstlisting}
+\begin{enumerate}
+  \item A
+  \item B
+  \item C
+\end{enumerate}
+				\end{lstlisting}
+			\end{block}
+		\end{column}
+		\begin{column}{0.31\textwidth}
+			\begin{block}{\tt\bfseries description}
+				\begin{description}
+					\item[A] \ldots \item[B] \ldots \item[C] \ldots
+				\end{description} 
+				\begin{lstlisting}
+\begin{description}
+  \item[A] \ldots
+  \item[B] \ldots
+  \item[C] \ldots
+\end{description}
+				\end{lstlisting}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Verschachtelte Aufzählungen}
+	\vspace{-0.9cm}
+	\latexBeispielDirekt{Beispiel: verschachtelte Aufzählung}{examples/Verschachtelte_Aufzaehlung/Verschachtelte_Aufzaehlung}
+\end{frame}

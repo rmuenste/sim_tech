@@ -1,0 +1,146 @@
+\begin{frame}[fragile]
+	\frametitle{Bibliographie}
+	\begin{itemize}
+        \item \LaTeX{} stellt mit BibTeX ein sehr mächtiges System zur Verwaltung von Literaturverweisen bereit.
+		\item Um BibTeX nutzen zu können, muss zunächst eine Datenbank angelegt werden.
+		\item Die Datenbank ist eine einfache Textdatei mit Einträgen für die verschiedenen zitierten Quellen.
+		\item allgemeiner Aufbau eines Eintrags:
+		\begin{itemize}
+			\item \keyword{@literaturtyp\{kennung, name1=''Wert1'', name2=''Wert2'', ...\}}
+		\end{itemize}
+		\begin{center}
+			\begin{tabular}{rl}
+				\emphkeyword{literaturtyp} & spezifiziert die Art der Quelle\\
+				& unterschiedliche Eintragstypen erfordern unterschiedliche\\
+				& Angaben zur Quelle \\[0.2cm]
+				\emphkeyword{kennung} & damit kann auf den Eintrag referenziert werden\\[0.2cm]
+				\emphkeyword{name=''wert''} & Zuweisung von Werten an die verschiedenen Felder
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie -- Unterstützte Literatur-Typen}
+	\begin{center}
+		\begin{tabular}{rl}
+			\emphkeyword{article} & Veröffentlichung in einer Zeitschrift\\
+			\emphkeyword{book} & Buch\\
+			\emphkeyword{booklet} & Buch ohne Verleger\\
+			\emphkeyword{inbook} & Teil eines Buches\\
+			\emphkeyword{incollection} & Teil einer Buchreihe\\
+			\emphkeyword{inproceedings} & Teil einer Veröffentlichung zu einer Konferenz\\
+			\emphkeyword{manual} & Technische Dokumentation \\
+			\emphkeyword{masterthesis} & Masterarbeit\\
+			\emphkeyword{phdthesis} & Doktorarbeit\\
+			\emphkeyword{proceedings} & Veröffentlichung zu einer Konferenz\\
+			\emphkeyword{techreport} & Technischer Bericht\\
+			\emphkeyword{unpublished} & unveröffentlicht\\
+			\emphkeyword{misc} & falls alles andere nicht passt
+		\end{tabular}
+	\end{center}
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie -- Unterstützte Felder}
+	\vspace{-0.7cm}
+	\begin{center}
+		\begin{tabular}{rl}
+			\emphkeyword{address} & die Adresse des Verlags oder einer anderen Institution\\
+			\emphkeyword{annotate} & Anmerkungen \\
+			\emphkeyword{author} & Namen der Autoren (in BibTeX Format)\\
+			& \tabitem mehrere Namen werden durch \keyword{AND} getrennt \\
+			& \tabitem zwei Möglichkeiten Namen zu schreiben:\\
+			& ~~~ \keyword{Donald E. Knuth} \textit{oder} \keyword{Knuth, Donald E.}\\
+			\emphkeyword{booktitle} & Titel des Buchs \\
+			\emphkeyword{chapter} & Kapitel- oder Abschnitt-Nummer\\
+			\emphkeyword{crossref} & Datenbank-Schlüssel\\
+			\emphkeyword{edition} & Auflage (z. B. eines Buchs)\\
+			\emphkeyword{editor} & Namen der Editoren (analog dem \keyword{author}-Feld)\\
+			\emphkeyword{howpublished} & Veröffentlichungsart \\
+			\emphkeyword{institution} & fördernde Institution eines technischen Reports\\	
+			\emphkeyword{journal} & Zeitschriftenname (häufig abgekürzt)
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie -- Unterstützte Felder}
+	\vspace{-0.7cm}
+	\begin{center}
+		\begin{tabular}{rl}
+            \emphkeyword{key} & Feld zur Sortierung und Erstellung von Labels\\
+			\emphkeyword{month} & Monat der Veröffentlichung/Erscheinung\\
+			\emphkeyword{note} & zusätzliche Information\\
+			\emphkeyword{number} & Nummer einer Zeitschrift, eines Reports oder eines Bandes\\
+			\emphkeyword{organization} & fördernde Organisation\\
+			\emphkeyword{pages} & Seitenzahlen oder Seitenzahlbereich (z. B. \keyword{7-33})\\
+			\emphkeyword{publisher} & Name des Verlags\\
+			\emphkeyword{school} & Name der ``Schule'', an der eine Abschlussarbeit geschrieben wurde\\
+			\emphkeyword{series} & Name einer Reihe\\
+			\emphkeyword{title} & Titel des Werkes\\
+			\emphkeyword{type} & Typ eines technischen Reports\\
+			\emphkeyword{volume} & Band einer Zeitschrift oder eines Buches\\
+			\emphkeyword{year} & Jahr der Veröffentlichung/Erscheinung
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie einbinden}
+	\begin{itemize}
+		\item verschiedene Felder sind bei verschiedenen Literaturtypen vorgeschrieben
+		\item es gibt noch weitere Felder wie \keyword{ISBN}, \keyword{doi}, \keyword{abstract}, ...
+		\item Sonderzeichen und Umlaute müssen speziell maskiert werden\\[0.5cm]
+		\item BibTeX muss eigens aufgerufen werden:\\
+		\kommandozeile{latex beispiel}\\
+		\kommandozeile{bibtex beispiel}\\
+		\kommandozeile{latex beispiel}\\
+		\kommandozeile{latex beispiel}
+		\item BibTeX prüft die Syntax der Einträge und erzeugt eine Datei, die in das \LaTeX-Dokument eingebunden werden kann
+        \item nach Aufruf von BibTeX muss \LaTeX{} die Datei zwei mal kompilieren, damit alle Referenzen korrekt gesetzt werden
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie einbinden}
+	\begin{itemize}
+		\item um die Bibliographie anzuzeigen, verwendet man den folgenden Befehl:\\
+		\befehl{bibliography\{literatur\}}
+		\item \keyword{literatur} bezeichnet dabei die Datei mit den entsprechenden Literaturangaben
+		\item aufgelistet werden alle Quellen, die im Dokument zitiert wurden (mittels dem Befehl \befehl{cite\{kennung\}})
+		\item durch \befehl{nocite\{kennung\}} wird auch der \keyword{kennung} entsprechende Eintrag aufgeführt, auch wenn er nicht zitiert wurde
+		\item die Formatierung hängt von \befehl{bibliographystyle} ab
+		\item es gibt verschiedene Pakete zur Gestaltung der Literaturverweise, z. B. \keyword{natbib}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Bibliographie mit \emphkeyword{natbib}}
+	\vspace{-1cm}
+	\begin{itemize}
+		\item \keyword{natbib} wird durch \befehl{usepackage\{natbib\}} (in der Präambel) eingebunden
+		\item als Format wird dann \keyword{plainnat} gewählt:
+		\befehl{bibliographystyle\{plainnat\}}
+		\item \keyword{natbib} unterstützt mehrere zusätzliche Literaturangaben wie
+		\begin{center}
+			\begin{tabular}{rl}
+				\emphkeyword{ISBN} & ISBN-Nummer eines Buches\\
+				\emphkeyword{ISSN} & ISSN-Nummer einer Zeitschrift\\
+				\emphkeyword{URL} & Internet-Adresse für Online-Dokumente\\
+				\emphkeyword{DOI} & Digital Object Identifier
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+	
+	\begin{columns}[c]
+		\begin{column}{0.54\textwidth}
+			\begin{block}{Zitieren mit \keyword{natbib}}
+			\lstinputlisting{examples/NatBib/NatBib}
+			\end{block}
+		\end{column}
+		\begin{column}{0.44\textwidth}
+			\shadowbox{\begin{minipage}{0.99\textwidth} Knuth et al. (1993)\\(Knuth et al., 1993)\\(siehe Knuth et al., 1993, S. 13)\\Knuth et al.\\1993 \end{minipage}}
+		\end{column}
+	\end{columns}
+\end{frame}

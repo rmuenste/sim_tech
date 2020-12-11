@@ -1,0 +1,19 @@
+Erstellen Sie folgenden Text:
+	\begin{center}
+		\shadowbox{
+			\begin{minipage}{0.9\textwidth}
+				Sei $I$ ein reelles Intervall und $f:I\to\mathbb{R}$ eine $(n+1)$-mal stetig differenzierbare Funktion. Dann gilt für alle $a, x\in I$:
+				\(f(x) = T_n(x) + R_n(x)\)
+				mit dem $n$-ten Taylorpolynom an der Entwicklungsstelle $a$
+				\begin{eqnarray*}
+				T_(x) & = & \sum_{k=0}^n \frac{f^{(k)}(x)}{k!}(x-a)^k \\
+				      & = & f(a) + \frac{f'(a)}{1!} (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \cdots + \frac{f^{(n)}(x)}{n!} (x-a)^n
+				\end{eqnarray*}
+				und dem $n$-ten Restglied
+				\[R_n(x) = \int_a^x \frac{(x-t)^n}{n!} f^{(n+1)}(t)\;\mathrm{d}t\]
+				
+				In den Formeln stehen $f'$, $f''$, \dots, $f^{(n)}$ für die erste, zweite, ..., $n$-te Ableitung der Funktion $f$.
+			\end{minipage}
+		}
+	\end{center}
+	\textit{Hinweis:} Verwenden Sie zur Erzeugung der Mengensymbole $\mathbb{R}$ und $\mathbb{N}$ den im Paket \keyword{amssymb} {enthaltenen} Befehl \befehl{mathbb} und für die ausgerichteten Gleichungen die Umgebung \keyword{align} aus dem \keyword{amsmath} Paket.

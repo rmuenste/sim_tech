@@ -1,0 +1,21 @@
+\usepackage[amsmath,thmmarks,hyperref,thref]{ntheorem} % option hyperref erzeugt Fehler, 
+\theoremstyle{break}
+\theorembodyfont{\normalfont\slshape}
+\theoremstyle{break}
+\theorembodyfont{\normalfont\slshape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\theorempreskipamount}{1.5em}
+\theoremseparator{}
+\theoremstyle{break}
+\theoremsymbol{}
+\theoremheaderfont{\normalfont\sffamily\bfseries\color{fau}}
+\theorembodyfont{\sf}
+\newtheorem{aufg}{Aufgabe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{abc}{\begin{enumerate}\renewcommand{\labelenumi}{\alph{enumi})}}{\end{enumerate}}
+\newenvironment{ABC}{\begin{enumerate}\renewcommand{\labelenumi}{\Alph{enumi})}}{\end{enumerate}}
+\newenvironment{iii}{\begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}}{\end{enumerate}}
