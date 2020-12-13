@@ -30,6 +30,9 @@
 				\item macOS
       \end{itemize}			
     \end{itemize}
+    \begin{center}
+      \includegraphics[width=0.6\textwidth]{screenshots/download-pv.png}
+    \end{center}		
 \end{frame}
 
 \begin{frame}
@@ -197,6 +200,13 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{View Properties Panel II}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{screenshots/properties-1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
   \frametitle{Camera and Axes Toolbar}
 
   \includegraphics[width=\textwidth]{screenshots/camerabar.png}
@@ -237,10 +247,31 @@
       \item Customize the mapping of colors to numerical values in the data set
       \item Set your customized settings as defaults
     \end{itemize}
+		\vspace{2cm}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{screenshots/color-map-icon.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+\vspace{-1cm}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{screenshots/color-map-editor.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Color Palette}
+    \begin{itemize}
+      \item Change the default color configuration of ParaView
+      \item Set new colors for edges, surfaces, selection, background
+      \item Quickly switch color configurations to highlight certain features of your data
+      \item Change the color configuration for screenshots (often require white background)
+      \item Save your custom configuration and import or export it
+    \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{screenshots/color-palette-icon.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -345,6 +376,8 @@
       \item Visualize the path that a particle would take 
       \item Particle tracers for transient data
       \item Moves particles along a series of vector fields
+      \item Final visualization often results in an animation outputted in a movie format (.avi, .mp4, .wmv, ...)
+      \item Surface Line Integral Convolution (\keyword{Surface LIC} Plugin) can sometimes be used as an alternative
     \end{itemize}
 \end{frame}
 
@@ -428,8 +461,37 @@
     \begin{itemize}
       \item Inspect nodes or elements of special interest in your data set
       \item Locate/Pinpoint a potential or actual cause of problems in your simulation data
-      \item Parallel projection mode can be very helpful during manual selection
+      \item Parallel projection mode can be very helpful during manual selection (3D data sets)
+      \item Select points elements/points on surface or through frustrum volume
+      \item Polygonal selection tool for non-box shaped selections
+      \item +/- icon can add/substract from selection
+      \item Press 'v' key opens 'Find Data' window to inspect numerical values of selection
     \end{itemize}
+		\begin{center}
+      \includegraphics[width=0.9\textwidth]{screenshots/selection-icons.png}					
+		\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Spreadsheet View}
+    \begin{itemize}
+      \item Shows numerical values of cells/nodes of the data set
+      \item Selected elements are highlighted 
+    \end{itemize}
+		\begin{center}
+      \includegraphics[width=0.8\textwidth]{screenshots/spreadsheet.png}					
+		\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Find Data}
+    \begin{itemize}
+      \item Shows numerical values of selected elements
+      \item \keyword{Freeze Selection} selects elements by ID instead of location in frustrum
+    \end{itemize}
+		\begin{center}
+      \includegraphics[width=0.8\textwidth]{screenshots/find-data.png}					
+		\end{center}
 \end{frame}
 
 \begin{frame}
@@ -482,6 +544,9 @@
 
 \begin{frame}
   \frametitle{Simple VTK Legacy Cube Data}
+		\begin{center}
+      \includegraphics[width=0.8\textwidth]{screenshots/cube-vtk.png}					
+		\end{center}
 \end{frame}
 
 \begin{frame}
@@ -582,7 +647,7 @@
     \begin{block}{Start the remote Server}
         \begin{itemize}
           \item Start a ParaView data server on the remote machine  
-            \kommandozeile{> pvserver {-}{-}server-port=11111 {-}{-}use-offscreen-rendering}
+            \kommandozeile{> pvserver {-}{-}server-port=11111}
         \end{itemize}
     \end{block}
 
