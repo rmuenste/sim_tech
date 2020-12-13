@@ -20,11 +20,15 @@
 \begin{frame}
   \frametitle{How To Obtain ParaView}
     \begin{itemize}
-      \item Current Stable Version: 
-      \item KitWare website:
-      \item Windows: 
-      \item Linux-Variants: 
-      \item Mac OS: 
+      \item Current Stable Version: 5.8.1
+      \item Current Release Candidate: 5.9.0-RC2			
+      \item ParaView/KitWare website: https://www.paraview.org
+			\item Download: https://www.paraview.org/download/
+      \begin{itemize}			
+				\item Windows
+				\item Linux-Variants
+				\item macOS
+      \end{itemize}			
     \end{itemize}
 \end{frame}
 
@@ -155,6 +159,30 @@
     \end{minipage}
 \end{frame}
 
+\begin{frame}[plain]
+  \vspace{3cm}
+  \includegraphics[width=0.95\textwidth]{screenshots/pipeline0.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applying and Configuring a (Slice) Filter}
+	\begin{center}
+	\includegraphics[width=0.7\textwidth]{screenshots/filter-apply.png}		
+	\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applying and Configuring a (Slice) Filter II}
+    \begin{itemize}
+      \item \keyword{Control widgets} in the viewport to manually/visually configure filters
+      \item In the \keyword{Properties Panel} the filter can be configured with numbers
+      \item The \keyword{Gear Icon} can open/close additional configuration options			
+      \item The \keyword{Apply Button} is used to apply the current configuration of the filter						
+      \item When the configuration is changed it needs to be reapplied $\mapsto$ \keyword{Apply Button}
+			\item Filter configurations can be copied to quickly apply the same configuration multiple times
+    \end{itemize}
+\end{frame}
+
 \begin{frame}
   \frametitle{Camera and Axes Toolbar}
 
@@ -170,6 +198,8 @@
     \end{itemize}
 \end{frame}
 
+
+
 \begin{frame}
   \frametitle{Basic Filters}
 
@@ -184,6 +214,14 @@
       \item \keyword{Stream Traces}: Visualizes the pathline of a particle through a \emph{stationary} vector field 
     \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{Color Maps}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Color Palette}
 \end{frame}
 
 \begin{frame}
@@ -263,6 +301,33 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Stationary and Transient Data Sets}
+    \begin{itemize}
+      \item Stationary simulation data usually results in a single file
+      \item Transient simulations usually result in a file series 
+      \item ParaView recognizes many naming patterns:
+      \begin{itemize}
+        \item name.0000.vtk, name.0001.vtk, name.0002.vtk,...
+        \item name.vtk.0000, name.vtk.0001, name.vtk.0002,...				
+      \end{itemize}	
+      \item Transient data sets can be 'played' with the animation controls
+      \item Without actual timestamps, each file gets assigned one time unit 500 files $\mapsto$ 500 time steps					
+    \end{itemize}				
+		\begin{center}
+      \includegraphics[width=0.9\textwidth]{screenshots/transient.png}					
+		\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tracer Filters}
+    \begin{itemize}
+      \item Visualization of fluid motion by markers/tracers/indicators
+      \item Streamlines for stationary vector fields
+      \item Particle tracers for transient data
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
 
   \frametitle{Configuration of Tracer Filters}
 
@@ -271,8 +336,9 @@
       \item The input data set is the the flow field  
       \item The seed source is a user-defined starting location for the particles inside the flow field  
     \end{itemize}
-    \includegraphics[width=0.5\textwidth]{screenshots/tracer-source.png}
-
+		\begin{center}
+    \includegraphics[width=0.5\textwidth]{screenshots/tracer-source.png}			
+		\end{center}
 \end{frame}
 
 \begin{frame}
@@ -303,6 +369,45 @@
       \item \keyword{Calculator}: Use a set of mathematical operations to compute a new data field from existing ones (often used together with integrate variables filter)
     \end{itemize}
 
+\end{frame}
+
+\begin{frame}
+
+  \frametitle{Plotting with ParaView}
+
+  \begin{itemize}
+
+      \item PV plotting example: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting.pvsm}
+
+      \item Common ParaView plotting filters:
+      \begin{itemize}
+
+        \item \keyword{Plot Data} 
+
+        \item \keyword{Plot Over Line} 
+
+        \item \keyword{Plot Selection Over Time} 
+
+      \end{itemize}
+
+    \item Data can be exported to .csv to use in your favorite plot generator \keyword{File->Save Data}
+
+    \item ParaView will by default export ALL data fields to the .csv file (even those that you do not want or need for the plot) 
+
+    \item \keyword{Solution 1:} use <awk> to select the data columns you want: \kommandozeile{awk -F \textquotesingle,\textquotesingle $\;$  \textquotesingle\{print \$1 " " \$4\}\textquotesingle} (extract first and fourth column)
+
+    \item \keyword{Solution 2:} Remove unneccessary fields before export: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting2.pvsm}
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Screenshots With ParaView}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Animations/Movies With ParaView}
 \end{frame}
 
 \begin{frame}
@@ -362,6 +467,10 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Programmable Filters}
+\end{frame}
+
+\begin{frame}
 
   \frametitle{PvPython Simple Example}
 
@@ -401,44 +510,7 @@
 
 \end{frame}
 
-\begin{frame}
 
-  \frametitle{Plotting with ParaView}
-
-  \begin{itemize}
-
-      \item PV plotting example: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting.pvsm}
-
-      \item Common ParaView plotting filters:
-      \begin{itemize}
-
-        \item \keyword{Plot Data} 
-
-        \item \keyword{Plot Over Line} 
-
-        \item \keyword{Plot Selection Over Time} 
-
-      \end{itemize}
-
-    \item Data can be exported to .csv to use in your favorite plot generator \keyword{File->Save Data}
-
-    \item ParaView will by default export ALL data fields to the .csv file (even those that you do not want or need for the plot) 
-
-    \item \keyword{Solution 1:} use <awk> to select the data columns you want: \kommandozeile{awk -F \textquotesingle,\textquotesingle $\;$  \textquotesingle\{print \$1 " " \$4\}\textquotesingle} (extract first and fourth column)
-
-    \item \keyword{Solution 2:} Remove unneccessary fields before export: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting2.pvsm}
-
-  \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-  \frametitle{Screenshots With ParaView}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Animations/Movies With ParaView}
-\end{frame}
 
 \begin{frame}
   \frametitle{Client-Server Mode}
