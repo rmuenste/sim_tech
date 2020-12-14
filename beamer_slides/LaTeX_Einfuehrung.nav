@@ -1,3 +1,4 @@
+\beamer@endinputifotherversion {3.33pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
@@ -90,4 +91,4 @@
 \headcommand {\beamer@subsectionpages {1}{44}}
 \headcommand {\beamer@sectionpages {1}{44}}
 \headcommand {\beamer@documentpages {44}}
-\headcommand {\gdef \inserttotalframenumber {44}}
+\headcommand {\def \inserttotalframenumber {44}}
