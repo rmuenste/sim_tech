@@ -46,6 +46,37 @@
 \usepackage{hyperref}
 
 \usepackage{listings}
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{TUlightgreen},   commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+
 
 \lstset{breaklines=true,      % sets automatic line breaking
 basicstyle=\ttfamily\LARGE,
@@ -167,6 +198,7 @@ escapechar=@
 % N O R M A L E   U N I - V E R S I O N
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{inhalt/intro}
+\include{inhalt/matplotlib}
 %\begin{frame}
 %	\begin{block}{\huge Aufgabe 1 (Hello World)}
 %		\input{../exercises/exercises/hello_world}
@@ -244,12 +276,7 @@ escapechar=@
 %\include{inhalt/textformatierung-1}
 %\include{inhalt/aufzaehlungen}
 %\include{inhalt/mathematik-1}
-\begin{frame}
-  \frametitle{Happy ParaViewing}
 
-    \includegraphics[width=0.9\textwidth]{screenshots/paraviewing.png}
-
-\end{frame}
 
 \end{document}
 
