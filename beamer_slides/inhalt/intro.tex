@@ -295,22 +295,22 @@
   \includegraphics[width=\textwidth]{screenshots/load-state-file.png}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Examples Files}
-
-    \begin{itemize}
-      \item ParaView examples are provided as state files 
-      \item Download archive of ParaView examples from:
-      \item Extract archive to \kommandozeile{/mypath/to/examples/}
-      \kommandozeile{> tar xvfz pv\_examples.tar.gz -C /mypath/to/examples/}
-      \item Basic filter examples are located in \kommandozeile{/mypath/to/examples/pv\_examples}
-      \item Basic filter examples are located in \kommandozeile{/mypath/to/examples/pv\_examples/BasicFilters}
-      \item To load a basic filter example, load the state file and set data path to:
-        \kommandozeile{/mypath/to/examples/pv\_examples/vtk\_data/u.vtk}
-    \end{itemize}
-        
-
-\end{frame}
+%\begin{frame}
+%  \frametitle{Examples Files}
+%
+%    \begin{itemize}
+%      \item ParaView examples are provided as state files 
+%      \item Download archive of ParaView examples from:
+%      \item Extract archive to \kommandozeile{/mypath/to/examples/}
+%      \kommandozeile{> tar xvfz pv\_examples.tar.gz -C /mypath/to/examples/}
+%      \item Basic filter examples are located in \kommandozeile{/mypath/to/examples/pv\_examples}
+%      \item Basic filter examples are located in \kommandozeile{/mypath/to/examples/pv\_examples/BasicFilters}
+%      \item To load a basic filter example, load the state file and set data path to:
+%        \kommandozeile{/mypath/to/examples/pv\_examples/vtk\_data/u.vtk}
+%    \end{itemize}
+%        
+%
+%\end{frame}
 
 \begin{frame}
   \frametitle{Basic Filter Gallery I}
@@ -403,7 +403,7 @@
       \item Used to visualize transient flow data by particles 
       \item A particle path is produced by moving a particle along successive vector fields 
       \item Particle movement can then be animated by the \keyword{Animation Control} 
-      \item Particle tracer example location: \kommandozeile{/mypath/to/examples/pv\_examples/AdvancedFilters/particle\_tracer}
+%      \item Particle tracer example location: \kommandozeile{/mypath/to/examples/pv\_examples/AdvancedFilters/particle\_tracer}
     \end{itemize}
     \includegraphics[width=\textwidth]{screenshots/particle-tracer.png}
 
@@ -431,7 +431,7 @@
 
   \begin{itemize}
 
-      \item PV plotting example: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting.pvsm}
+%      \item PV plotting example: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting.pvsm}
 
       \item Common ParaView plotting filters:
       \begin{itemize}
@@ -450,7 +450,7 @@
 
     \item \keyword{Solution 1:} use <awk> to select the data columns you want: \kommandozeile{awk -F \textquotesingle,\textquotesingle $\;$  \textquotesingle\{print \$1 " " \$4\}\textquotesingle} (extract first and fourth column)
 
-    \item \keyword{Solution 2:} Remove unneccessary fields before export: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting2.pvsm}
+    \item \keyword{Solution 2:} Remove unneccessary fields before export %: \kommandozeile{/mypath/to/examples/pv\_examples/Plotting/plotting2.pvsm}
 
   \end{itemize}
 
@@ -589,7 +589,13 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Programmable Filters}
+  \frametitle{Calculator and Programmable Filter}
+    \begin{itemize}
+      \item Tools for user-defined calculations and data array creation/manipulation
+    \end{itemize}
+		\begin{center}
+      \includegraphics[width=0.8\textwidth]{screenshots/prog-filter.png}					
+		\end{center}
 \end{frame}
 
 \begin{frame}
@@ -597,15 +603,15 @@
   \frametitle{PvPython Simple Example}
 
   \begin{itemize}
-      \item PvPython simple example location: \kommandozeile{/mypath/to/examples/pv\_examples/PvPython/paraview\_python}
+%      \item PvPython simple example location: \kommandozeile{/mypath/to/examples/pv\_examples/PvPython/paraview\_python}
 
       \item Navigate to the folder and execute the PvPython script by: \kommandozeile{pvbatch ./python\_test.py \$(pwd)} or for versions higher than 5.1
         \kommandozeile{pvbatch {-}{-}use-offscreen-rendering ./python\_test.py \$(pwd)}
 
       \item The script will write an image \keyword{res.png} to the directory where you executed it 
-      \item \keyword{Exercise:} Try to recreate the python script using the trace mechanism, compare the output images if they are the same.
+      \item Recreate the python script using the trace mechanism, compare the output images if they are the same.
 
-      \item \keyword{Hint:} Prefer \keyword{pvbatch} over \keyword{pvpython} as pvpython tries to open an X windows which may fail on some computers    
+      \item Prefer \keyword{pvbatch} over \keyword{pvpython} as pvpython tries to open an X windows which may fail on some computers    
   \end{itemize}
 
 \end{frame}
