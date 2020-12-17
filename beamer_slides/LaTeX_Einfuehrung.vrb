@@ -1,4 +1,8 @@
-\vspace{-1cm}
-    \begin{center}
-      \includegraphics[width=0.7\textwidth]{screenshots/plt-1.png}
-    \end{center}						
+\frametitle{Using Matplotlib on a Cluster without Graphical Interface}
+    \begin{itemize}
+      \item Design your desired postprocessing plot in i.e. Jupyter notebook
+      \item Save your python code to a script, eventually add file handling/manipulation code			
+      \item Add code to save your plot to a file				
+      \item Transfer the script to the compute cluster						
+      \item Execute script on the cluster, transfer the resulting file to local computer									
+    \end{itemize}					
