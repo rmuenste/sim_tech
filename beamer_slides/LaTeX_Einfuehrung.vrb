@@ -1,8 +1,25 @@
-\frametitle{Using Matplotlib on a Cluster without Graphical Interface}
-    \begin{itemize}
-      \item Design your desired postprocessing plot in i.e. Jupyter notebook
-      \item Save your python code to a script, eventually add file handling/manipulation code			
-      \item Add code to save your plot to a file				
-      \item Transfer the script to the compute cluster						
-      \item Execute script on the cluster, transfer the resulting file to local computer									
-    \end{itemize}					
+\frametitle{Unstructured Meshes Two-Level Ordering (FEATFLOW)}
+\begin{itemize}
+\item NVT: number of vertices on a level
+\item NMT: number of edges on a level
+\item NAT: number of faces on a level
+\item NEL: number of faces on a level
+\item During regular refinement we generate NMT+NAT+NEL new vertices
+\item These are stored at the end of the current vertex array with the corresponding indices
+\end{itemize}
+Example of a 2D vertex array after a regular refinement. Before the refinement the length of the vertex array is NVT:
+\begin{tikzpicture}
+\matrix (A) [matrix of nodes,
+                       every node/.style={text depth=.5ex,text height=2ex},
+                       nodes={draw, minimum size=8mm, anchor=center},
+											 nodes in empty cells, minimum height = 2cm,
+											 row 2/.style={nodes={draw=none}},
+											 row 3/.style={nodes={draw=none}},column sep=-\pgflinewidth,]											
+    {		
+		 v & $\dots$ & v & e & $\dots$ & e & c & \dots & c\\
+		$\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$  & $\uparrow$ & $\uparrow$\\
+		1 &  & nvt & nvt+1 &  & nvt+nmt & nvt+nmt+1 & & nvt+nel\\		
+		};
+%\foreach \i [evaluate=\i as \ni using {int(\i)}, evaluate=\i as \ntext using {int(\i)}] in {1,3,4,6}
+%    \draw [{Stealth}-, red!70] (A-1-\ni.south west)--++(-90:5mm) node[below] {\ntext};
+\end{tikzpicture}

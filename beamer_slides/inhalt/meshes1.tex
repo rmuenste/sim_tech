@@ -272,6 +272,7 @@ A bounded manifold can be either \keyword{orientable} or \keyword{non-orientable
 \item iterate over the adjacent faces
 \end{itemize}
 \item Store user-defined traits in vertices, edges, halfedges, faces	
+\item STL-like usage
 \end{itemize}								
 \end{frame}
 
@@ -283,85 +284,205 @@ A bounded manifold can be either \keyword{orientable} or \keyword{non-orientable
 \end{figure}
 \end{frame}
 
-\begin{frame}
-\frametitle{Software For Generation and Processing of Surface Meshes}
-The process of generating meshes that are well suited for using them in a numerical simulation is 
-called \textit{mesh generation} and can be called a scientific discipline on its own right. The use of meshes is necessitated by the fact that the partial differential equations,
-that describe the physical phenomena that we want to simulate can be solved analytically only for very basic cases on simple domains. In order to solve realistic
-problems the domain needs to be discretized by a computational mesh so that the system of equations can be discretized. Some of the most popular mesh-based numerical 
-solution techniques for PDEs include the Finite Volume method, the Finite Difference method and the Finite-Element method. The reason why we have briefly summarized 
-the very basic foundation of meshes and their topology is that it allows us to formally introduce structured and unstructured meshes. In the remainder of this 
-introduction to computational meshes we will examine structured and unstructured meshes and discuss their properties. In a numerical simulation the choice of mesh 
-type and element type is dependent on the numerical simulation scheme and the concrete problem that needs to be solved. Not only the type of mesh employed is problem-dependent,
-but also the generation of the topological mesh structure depends on the type of physical problem and its specific features, the compute hardware that is 
-available, the desired accuracy of the result, the available compute time 
-and findings from previous simulations with different meshes.
+\begin{frame}[fragile]
+
+    \begin{lstlisting}[language=C++]
+MyMesh mesh;
+for(MyMesh::FaceIter f_it = mesh.faces_begin(); f_it != mesh.faces_end(); ++f_it) {
+    std::cout << "The face's valence is " 
+		          << mesh.valence( *f_it ) 
+							<< std::endl;
+}\end{lstlisting}     
+
+\begin{lstlisting}[language=C++]
+MyMesh mesh;
+for (MyMesh::VertexIter v_it=mesh.vertices_sbegin(); v_it!=mesh.vertices_end(); ++v_it) {
+  // circulate around the current vertex
+  for (MyMesh::VertexVertexIter vv_it=mesh.vv_iter(*v_it); vv_it.is_valid(); ++vv_it)
+  {
+    // do something with e.g. mesh.point(*vv_it)
+  }
+}\end{lstlisting}     
 \end{frame}
 
 \begin{frame}
-A structured mesh is characterized by the feature that the degree vertices, the number of vertices adjacent to a mesh vertex, is the same throughout the
-whole mesh or in other words that it has a regular connectivity (with the exception of boundary vertices). The storage of such a mesh in computer memory can be realized by a simple array 
-of cells. This most simple
-type of storage is discouraged in case the mesh is to refined in the course of the application, because new vertices need to be inserted which makes additional
-storage of connectivity information neccessary. Usual choices of elements in a structured mesh include quadrilateral elements in 2D and hexahedral elements in 3D. 
-Elements like tetrahedrons are in general not used in structured meshes. The reason for this is that tetrahedrons require more elements to fill a domain with elements.
-The advantages of tetrahedrons, their ability to represent complex geometries better, do not play a significant role in structured meshes. As the 
-approach in structured meshes to approximate geometries better is by additional refinement levels while keeping the mesh structure simple which is easier to do
-with regular hexahedral elements. 
+%\frametitle{OpenMesh - The Halfedge Data Structure}
+\begin{figure}[h!]
+ \includegraphics[width=0.8\textwidth]{screenshots/tria-quality.png}
+\caption{Triangulations of a Cylinder}
+\end{figure}
 \end{frame}
 
 \begin{frame}
-There exist different subtypes of structured meshes that are used as computational meshes which mainly include equidistant cartesian meshes, rectilinear and curvilinear meshes these are
-illustrated in figure \ref{fig:structured}. 
-The equidistant cartesian meshes have many advantageous properties: they have a uniform element size and it is possible to easily locate an arbitrary point in the mesh, that is a relation between
-a location in space and an element can be established easily. For rectilinear and curvilinear meshes establishing this relation is also possible, but slightly more difficult. 
-In terms of memory representation of such meshes this means that an element index in a data structure
-can be efficiently computed based on coordinates in space:
-\begin{equation}
-  \vec{p} \mapsto i\text{ (array index) }, \vec{p} \in \mathbb{R}^3.
-  \label{eq:struct-map}
-\end{equation}
-Equidistant cartesian meshes are often used for parallel finite volume, finite difference or 
-general high performance computing schemes because of their easy generation, memory access patterns and simple domain decomposition capabilities. Besides their use in 
-these applications equidistant structured meshes are used as acceleration structures for geometric computations where there are employed as a means to subdivide space.
-These properties make equidistant cartesian meshes and variants popular choices for spatial subdivision structures intended for acceleration of geometric 
-calculations or other application specific geometric queries (visibility determination, point containment, distance or intersection queries).
+\frametitle{Meshes for Numerical Simulations}
+\begin{itemize}
+\item Used to solve discretized PDEs on a computational domain
+\item Used i.e. in Finite Volume method (OpenFOAM) and the Finite-Element method
+\item Meshes can roughly be grouped into \keyword{structured} and \keyword{unstructured meshes}
+\item Meshes need to fulfill quality criteria to facilitate solver convergence
+\item Some solvers require special meshes: \keyword{Geometric Multigrid} $\rightarrow$ \keyword{Hierarchical Mesh}
+\item Based on the solvers complexity the compute time increases with the degree of mesh refinement (number of elements)
+\item \keyword{Domain decomposition} can be used to parallelize the simulation by distributing the subdomains to different processors
+\end{itemize}
 \end{frame}
 
 \begin{frame}
+\frametitle{Structured Meshes}
+\begin{itemize}
+\item In a structured mesh the valency of every vertices is the same (except for boundary vertices)
+\item Consequently, the connectivity is also regular
+\item In principle the data structure for a 2D or 3D structured mesh can be a simple 2D or 3D array 
+\item Usually not applicable when additional information needs to be stored in the mesh
+\item Usual choices of elements in a structured mesh include quadrilateral elements in 2D and hexahedral elements in 3D 
+\item Tetrahedrons are possible, but tetrahedrons require more elements to fill a domain with elements
+\item Tetrahedrons can represent complex geometries better and automatic mesh generation methods are available
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+There exist different subtypes of structured meshes that are used as computational meshes which mainly include:
+\begin{itemize}
+\item \keyword{equidistant} cartesian meshes,
+\item \keyword{rectilinear} meshes
+\item \keyword{curvilinear} meshes 
+\end{itemize}
 \begin{figure}[h!]
 \centering
 \subfloat[Equidistant cartesian mesh]{ 
- \includegraphics[height=3cm]{Images/equidistant.eps}
+ \includegraphics[height=5cm]{Images/equidistant.eps}
  \label{fig:equidistant}
 }\hspace{0.2cm}
 \subfloat[Rectilinear mesh]{ 
- \includegraphics[height=3cm]{Images/rectilinear.eps}
+ \includegraphics[height=5cm]{Images/rectilinear.eps}
  \label{fig:rectilinear}
 }\hspace{0.2cm}
 \subfloat[Curvilinear mesh]{ 
- \includegraphics[height=3cm]{Images/curvilinear.eps}
+ \includegraphics[height=5cm]{Images/curvilinear.eps}
  \label{fig:curvilinear}
 }
-\caption{Structured meshes used as computational meshes, from left to right: equidistant structured mesh, rectilinear mesh and curvilinear mesh.}
+\caption{Structured meshes used as computational meshes, from left to \\ right: equidistant structured mesh, rectilinear mesh and curvilinear mesh.}
 \label{fig:structured}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-In an unstructured mesh the vertices in general do not have a predefined uniform vertex degree. In principle this means that an arbitrary number of cells can be
-incident to a vertex. The freedom of not being confined to a uniform vertex valency allows for better geometry resolution by the mesh, which is especially
-helpful in the case of complex geometries. Furthermore, unstructured meshes can employ connector elements to gradually reduce the level of refinement in a grid
-from domain areas where a high mesh resolution is required to domain areas where such a high mesh resolution is not needed (see figure \ref{fig:unstructured-fac}). This property is a clear advantage over
-structured meshes where the mesh resolution can only be increased globally or by local vertex redistribution without changing the 
-connectivity of the mesh. The choice of unstructured meshes in order to better approximate complex-shaped geometries introduces some difficulties as well. Complex 
-geometries are often explicitly defined by a set of coordinates in space or by an explicit or implicit analytic function. Using an unstructured mesh there is 
-in general no easy way to introduce a mapping from positions in space to element indices in computer memory. Which means that calculations that involve geometric 
-information about the object that is represented by the mesh may need to resort to exhaustive search procedures if no measure are taken to add this feature to the 
-class of unstructured meshes. Possible solutions to this problem are discussed in the following chapters. Standard choices for cell geometries in unstructured meshes are hexahedrons, tetrahedrons or prisms.\\
+\frametitle{Structured Meshes and Point Location}
+The equidistant cartesian meshes have an advantageous property: 
+\begin{itemize}
+\item They have a uniform element size and it is possible to easily locate an arbitrary point in the mesh
+\item Useful for many function evaluation tasks
+\item Greatly increases computation speed when using immersed geometries and fictious domain/boundary methods
+\end{itemize}
+For rectilinear and curvilinear meshes this is also possible, but slightly more difficult. In terms of memory representation of such meshes this means that an element index in a data structure can be efficiently computed based on coordinates in space:
+\begin{equation*}
+  f: \vec{p} \mapsto i\text{ (array index) }, \vec{p} \in \mathbb{R}^3.
+  \label{eq:struct-map}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Further Advantages of Structured Meshes}
+\begin{itemize}
+\item Equidistant cartesian meshes are often used for parallel FV, FEM high performance computing schemes
+\item Easy generation, memory access patterns and simple domain decomposition
+\item Application of equidistant structured meshes as acceleration structures for geometric computations
+\item Employed as a means to subdivide space and thus reduce search domain
+\item Spatial subdivision structures intended for acceleration of geometric calculations 
+\item Example for geometric queries: visibility determination, point containment, distance or intersection queries
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Unstructured Meshes}
+\begin{itemize}
+\item In an unstructured mesh the vertices in general do not have a predefined uniform vertex degree
+\item In principle this means that an arbitrary number of cells can be incident to a vertex
+\item This is helpful for resolving an immersed geometry because edges, faces can be aligned to the shape of the geometry
+\item We call these meshes \keyword{aligned unstructured meshes}
+\item Better resolution of flow features and geometry increases the accuracy of the result
+\item Unstructured meshes can employ connector elements to gradually increase/reduce the level of refinement in a grid
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Quality Criteria}
+The quality of a mesh depends on the quality of its elements. A variety of mesh quality criteria \cite{kellyansys} exist to measure cell quality:
+\begin{itemize}
+\item Aspect ratio
+\item Angle deviation
+\item Corner angle
+\item Jacobian ration
+\item Inverted cells, self-intersecting cells
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+  \centering
+  \subfloat[Example of edge length rations]{ 
+    \includegraphics[width=0.75\textwidth]{screenshots/edge-ratio.jpg}
+    \label{fig:edgeration}
+  }\\
+  \subfloat[Examples of angle deviation values]{ 
+    \includegraphics[width=0.75\textwidth]{screenshots/angle-deviation.jpg}
+    \label{fig:angledev}
+  } 
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+  \centering
+  \subfloat[Maximum inner angle criterium]{ 
+    \includegraphics[width=0.75\textwidth]{screenshots/inner-angle.jpg}
+    \label{fig:innerangle}
+  }\\
+  \subfloat[Examples of angle deviation values]{ 
+    \includegraphics[width=0.75\textwidth]{screenshots/jacobi-deviation.jpg}
+    \label{fig:jacobideviation}
+  } 
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+  \centering  
+    \includegraphics[width=0.75\textwidth]{screenshots/inversion.jpg}
+		\caption{Cell self-intersection, inverted cell}
+  \label{fig:camaro-mesh}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Embedding Geometries with the Fictitious Boundary Method}
+\begin{itemize}
+\item Unstructured meshes in order to better approximate complex-shaped geometries introduces some difficulties as well
+\item For Fictitious Boundary type methods one has to know which vertices of the mesh are solid vertices and which are fluid vertices
+\item In order to set appropriate boundary conditions an inside/outside indicator function has to be computed
+\end{itemize}
+\begin{equation*}
+ \alpha_{i} (\vec{x}) = 
+   \begin{cases}1  &  \mbox{for } \vec{x} \in \Omega_{s}, \\
+                0  &  \mbox{for } \vec{x} \in \Omega_{f} \setminus \Omega_s  
+   \end{cases}   
+\end{equation*}
+\begin{itemize}
+\item $\Omega_{s}$: solid domain
+\item $\Omega_{f}$: fluid domain
+\end{itemize}
+\end{frame}
+
+%domain areas where a high mesh resolution is required to domain areas where such a high mesh resolution is not needed (see figure \ref{fig:unstructured-fac}). This property is a %clear advantage over structured meshes where the mesh resolution can only be increased globally or by local vertex redistribution without changing the 
+%connectivity of the mesh. The . Complex 
+%geometries are often explicitly defined by a set of coordinates in space or by an explicit or implicit analytic function. Using an unstructured mesh there is 
+%in general no easy way to introduce a mapping from positions in space to element indices in computer memory. Which means that calculations that involve geometric 
+%information about the object that is represented by the mesh may need to resort to exhaustive search procedures if no measure are taken to add this feature to the 
+%class of unstructured meshes. Possible solutions to this problem are discussed in the following chapters. Standard choices for cell geometries in unstructured meshes are hexahedrons, tetrahedrons or prisms.\\
+
+\begin{frame}
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[height=7cm]{Images/fac_unstructured.eps}
+\includegraphics[width=0.7\textwidth]{Images/fac_unstructured.eps}
 \end{center}
 \caption{Unstructured 2D mesh where the mesh edges are aligned with an inner circle. We have marked some vertices with different 
 degrees to that are used as anchor for connector elements (A) or as elements that approximate the circle geometry with its edges (B).}
@@ -370,7 +491,267 @@ degrees to that are used as anchor for connector elements (A) or as elements tha
 \end{frame}
 
 \begin{frame}
-open volume mesh
-salome
-gitter adaptivität
+\begin{figure}[h!]
+  \centering
+  \subfloat[Mesh view with indicator function]{ 
+    \includegraphics[width=0.5\textwidth]{Images/car.eps}
+    \label{fig:camaro-nondef}
+  }
+  \subfloat[Rendered surface mesh of the geometry]{ 
+    \includegraphics[width=0.5\textwidth]{Images/camaro.eps}
+    \label{fig:camaro}
+  }
+  \caption{Inside/outside indicator function}
+  \label{fig:camaro-mesh}
+\end{figure}
 \end{frame}
+
+\begin{frame}
+\frametitle{Data Structures for Unstructured Meshes}
+\begin{itemize}
+\item Data structure needs to support hierarchical meshes/mesh levels $\rightarrow$ multi-grid solver
+\item FEATFLOW based or derived software packages use the two-level ordering
+\item Lowest Mesh level called the coarse grid
+\item Mesh levels build successively, during refinement append vertices of next mesh level at the end of the vertex array
+\item Thus indices in the connectivity information remain valid during refinement
+\item Store connectivity arrays for each level individually
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+\centering
+\subfloat[The coarse mesh] {
+\centering
+ \includegraphics[width=0.35\textwidth]{Images/tc_base_mesh.eps}
+ \label{fig:tc_base_mesh}
+}
+\hspace{1.0cm}
+\subfloat[The fine mesh] {
+\centering
+ \includegraphics[width=0.35\textwidth]{Images/tc_mesh.eps}
+ \label{fig:tc_mesh}
+}
+\caption{Pre-adapted hierachical mesh}
+\label{fig:bench_setup}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Unstructured Meshes Two-Level Ordering (FEATFLOW)}
+\begin{itemize}
+\item NVT: number of vertices on a level
+\item NMT: number of edges on a level
+\item NAT: number of faces on a level
+\item NEL: number of faces on a level
+\item During regular refinement we generate NMT+NAT+NEL new vertices
+\item These are stored at the end of the current vertex array with the corresponding indices
+\end{itemize}
+Example of a 2D vertex array after a regular refinement. Before the refinement the length of the vertex array is NVT:
+\begin{tikzpicture}
+\matrix (A) [matrix of nodes,
+                       every node/.style={text depth=.5ex,text height=2ex},
+                       nodes={draw, minimum size=8mm, anchor=center}, 
+											 nodes in empty cells, minimum height = 2cm,
+											 row 2/.style={nodes={draw=none}},
+											 row 3/.style={nodes={draw=none}},column sep=-\pgflinewidth,]											
+    {		 
+		 v & $\dots$ & v & e & $\dots$ & e & c & \dots & c\\
+		$\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$  & $\uparrow$ & $\uparrow$\\
+		1 &  & nvt & nvt+1 &  & nvt+nmt & nvt+nmt+1 & & nvt+nel\\		
+		};
+%\foreach \i [evaluate=\i as \ni using {int(\i)}, evaluate=\i as \ntext using {int(\i)}] in {1,3,4,6} 
+%    \draw [{Stealth}-, red!70] (A-1-\ni.south west)--++(-90:5mm) node[below] {\ntext};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Domain Decomposition}
+\begin{figure}[h!]
+\centering
+\includegraphics[height=7cm]{Images/domains.eps}
+\caption{Domain Decomposition in FEATFLOW: Whole domain (left), domain decomposed in 4 subdomains (right)}
+\label{fig:domains}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Domain Decomposition for HPC}
+\begin{itemize}
+\item Solve the problem on the whole domain by computing a partial solution on each \keyword{subdomain}
+\item The partial solutions on the subdomain are computed by different processing cores
+\item \keyword{Domain Decomposition}: decompose or partition the domain into 'equal' subdomains
+\item The amount of work that is assigned to each core should be as equal as possible
+\item The amount of communication between cores/subdomains should be minimal
+\item Software libraries for domain decomposition: 
+\begin{itemize}
+\item \keyword{Metis}: \url{http://glaros.dtc.umn.edu/gkhome/views/metis/}, FEATFLOW
+\item \keyword{Scotch}: \url{https://www.labri.fr/perso/pelegrin/scotch/}, OpenFOAM
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Graph Theory and Domain Decomposition}
+\begin{itemize}
+%\item In the simulation workflow domain decomposition follows grid generation
+\item Domain decomposition libraries such as Metis/Scotch use \keyword{Graph Theory} for decomposition
+\item Meshes/Matrices can be represented as Graphs (i.e. Undirected Graph and Adjacency Matrix)
+\item Graph Theory is also used for sparse matrix reordering 
+\item The class of algorithms used in domain decomposition is \keyword{Graph Partitioning} algorithms
+\item Graph partitioning algorithms can on their own be executed in parallel
+\end{itemize}
+\begin{figure}[h!]
+\centering
+\includegraphics[height=5cm]{screenshots/domain-decomposition.png}
+\label{fig:domains}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mesh Adaptivity/Deformation}
+\begin{itemize}
+\item Accuracy of the simulation result increases with mesh resolution
+\item Often a high accuracy solution is needed most in certain areas of interest
+\item \keyword{Mesh adaptation} is used to increase mesh resolution without regular refinement
+\item Different approaches to mesh adaptivity exist (some create \keyword{hanging nodes})
+\item In \keyword{h-adaptivity} cells in a region of interest of the mesh are locally refined
+\item The mesh connectivity is changed in the h-adaptivity approach
+\item Hanging nodes can be a avoided by using connector elements
+\item \keyword{r-adaptivity} moves existing nodes to increase resolution in regions of interest
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+\centering
+\subfloat[Adaptation to a circle by r-adaptivity] { 
+ \includegraphics[width=10cm]{Images/fbm_r_adapt.eps}
+}\\
+\subfloat[Mesh adaptation to an airfoil by h-adaptivity] { 
+ \includegraphics[width=10cm]{Images/h-adapt.eps}
+}
+\caption{Different types of mesh adaptation}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Local Refinement with Connector Elements}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.48\textwidth]{screenshots/PROTOTYPE2.png}
+\caption{Courtesy O.Mierka}
+\label{fig:domains}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{screenshots/P4.png}
+\label{fig:domains}
+\caption{Courtesy O.Mierka}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.\textwidth]{screenshots/GEO_BIW.png}
+\label{fig:domains}
+\caption{Courtesy O.Mierka}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{R-Adaptivity}
+\begin{itemize}
+\item Moves existing nodes into region of interest without changing mesh connectivity
+\item The r-adaptivity approach usually uses a \keyword{monitor function} to prescribe where nodes should be moved
+\item The monitor function often uses distance calculations to move nodes that are already close to the region of interest
+\item R-adaptivity can produce invalid elements (i.e. self-intersections) 
+\item Iterative movement of nodes with smoothing passes can help prevent invalid elements
+\item There exist PDE-based approaches \cite{GrajewskiKoesterTurek2008b} for r-adaptivity and algebraic methods based on \keyword{Laplacian Smoothing} \cite{Muenster:2016}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algebraic Mesh Adaptation using weighted Laplacian Smoothing}
+\keyword{Laplacian smoothing} is usually used on meshes to reduce noise, it tries to rearrange nodes more to the center of its surrounding nodes. Laplacian smoothing in its smoother form is represented by the following equation:
+\begin{equation*}
+\mathbf{x}_{new} = (1-\omega) \cdot \mathbf{x} + \frac{\omega}{{\rm e}(\mathbf{x})} \cdot \sum\limits_{j=1}^{{\rm e}(\mathbf{x})} \mathbf{x}_j, 
+\label{eq:laplace-smoother}
+\end{equation*}
+We can introduce vertex weights in order to move vertices closer to the region of interest, be giving vertices in that region a higher weight:
+\begin{equation*}
+\mathbf{x}_{i}^{\rm new} = (1-\omega) \cdot \mathbf{x}_{i}^{\rm old} + \omega \cdot \frac{\sum\limits_{j=1,n}^{{{\rm e}(i)}} w_j \mathbf{x}_j^{\rm old}}{\sum\limits_{j=1}^{{\rm e}(i)} w_j}\quad {\rm for} \quad i=1,n
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[h!]
+\centering
+\subfloat[The weights for the laplace smoother are generated by combining the signed distance $d(\mathbf{x})$ with a hat function] { 
+ \includegraphics[width=10cm]{Images/monitor_func.eps}
+ \label{fig:mon}
+}\hspace{0.1cm}
+\subfloat[Visualization of $w(\mathbf{x})$ on the undeformed mesh] {
+  \raisebox{3.5\baselineskip}{
+ \includegraphics[width=10cm]{Images/mon}
+ \label{fig:mon_field}
+ }
+}
+\caption{Generation of the weight distribution function $w(\mathbf{x})$}
+\label{fig:monitor_func}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[plain]
+\begin{figure}[h!]
+  \centering
+  \subfloat[Cylinder appears round in a two-color map]{ 
+    \includegraphics[width=13.0cm]{Images/fbm_laplace_con.eps}
+  }\\
+  \subfloat[The mesh nodes are concentrated near the surface of the cylinder]{ 
+    \includegraphics[width=13.0cm]{Images/fbm_laplace_con_edges.eps}
+  }
+  \caption{Cylinder resolution for the Laplace-$\kappa$ adaptation}
+  \label{fig:osc-cyl-lap-kappa}
+\end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{Images/drag_coefficient_laplace_kappa_classic_fbm.eps}
+    \caption{Drag curves for the standard FBM, Laplace-$\alpha$ and Laplace-$\kappa$ calculations}
+    \label{fig:drag-kappa-classic}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{Images/lift_kappa_fbm.eps}
+    \caption{Drag curves for the standard FBM, Laplace-$\alpha$ and Laplace-$\kappa$ calculations}
+    \label{fig:lift-kappa-classic}
+  \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mesh Generator Salome}
+\begin{itemize}
+\item \url{https://www.salome-platform.org/}
+\item Full-featured open-source CAD + mesh generator 
+\item Integrates many open-source meshing libraries by plug-ins (i.e. netgen)
+\item Allows a user to design geometries with semantic parts (inflow, outflow, walls, ...)
+\item Calculate quality metrics on meshes
+\item Many different mesh format available (i.e., export to OpenFOAM)
+\item Possible to execute tasks in batch mode by Python scripts
+\item Geared towards students, good documentation and example projects
+\end{itemize}
+\end{frame}
+
