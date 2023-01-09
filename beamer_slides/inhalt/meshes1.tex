@@ -93,6 +93,7 @@ By $|\mathcal M|$ we refer to the set of points of mesh $\mathcal M$:
 \end{frame}
 
 \begin{frame}
+  \vspace{-1cm}
   \frametitle{Neighborhoods/Connectivity in a Cell Complex}
 		\begin{itemize}
 			\item For vertex $\vec{v}$ inside of a polygon, the neighborhood of $\vec{v}$ is an arbitrary disk that is entirely located in the inside 
@@ -280,7 +281,7 @@ A bounded manifold can be either \keyword{orientable} or \keyword{non-orientable
 \frametitle{OpenMesh - The Halfedge Data Structure}
 \begin{figure}[h!]
  \includegraphics[width=0.8\textwidth]{screenshots/half-edge.png}
-\caption{The OpenMesh Half-Edge Data Structure \cite{Botsch02openmesh}.}
+\caption{The OpenMesh Half-Edge Data Structure \cite{kobbelt2002openmesh}.}
 \end{figure}
 \end{frame}
 
@@ -349,18 +350,18 @@ There exist different subtypes of structured meshes that are used as computation
 \begin{figure}[h!]
 \centering
 \subfloat[Equidistant cartesian mesh]{ 
- \includegraphics[height=5cm]{Images/equidistant.eps}
+ \includegraphics[height=5cm]{Images/equidistant.pdf}
  \label{fig:equidistant}
 }\hspace{0.2cm}
 \subfloat[Rectilinear mesh]{ 
- \includegraphics[height=5cm]{Images/rectilinear.eps}
+ \includegraphics[height=5cm]{Images/rectilinear.pdf}
  \label{fig:rectilinear}
 }\hspace{0.2cm}
 \subfloat[Curvilinear mesh]{ 
- \includegraphics[height=5cm]{Images/curvilinear.eps}
+ \includegraphics[height=5cm]{Images/curvilinear.pdf}
  \label{fig:curvilinear}
 }
-\caption{Structured meshes used as computational meshes, from left to \\ right: equidistant structured mesh, rectilinear mesh and curvilinear mesh.}
+\caption{Structured meshes used as computational meshes, from left to right: equidistant structured mesh, rectilinear mesh and curvilinear mesh.}
 \label{fig:structured}
 \end{figure}
 \end{frame}
@@ -494,11 +495,11 @@ degrees to that are used as anchor for connector elements (A) or as elements tha
 \begin{figure}[h!]
   \centering
   \subfloat[Mesh view with indicator function]{ 
-    \includegraphics[width=0.5\textwidth]{Images/car.eps}
+    \includegraphics[width=0.5\textwidth]{Images/car-mesh.png}
     \label{fig:camaro-nondef}
   }
   \subfloat[Rendered surface mesh of the geometry]{ 
-    \includegraphics[width=0.5\textwidth]{Images/camaro.eps}
+    \includegraphics[width=0.5\textwidth]{Images/camaro.png}
     \label{fig:camaro}
   }
   \caption{Inside/outside indicator function}

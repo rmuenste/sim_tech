@@ -12,14 +12,14 @@ Example of a 2D vertex array after a regular refinement. Before the refinement t
 \matrix (A) [matrix of nodes,
                        every node/.style={text depth=.5ex,text height=2ex},
                        nodes={draw, minimum size=8mm, anchor=center},
-											 nodes in empty cells, minimum height = 2cm,
-											 row 2/.style={nodes={draw=none}},
-											 row 3/.style={nodes={draw=none}},column sep=-\pgflinewidth,]											
-    {		
-		 v & $\dots$ & v & e & $\dots$ & e & c & \dots & c\\
-		$\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$  & $\uparrow$ & $\uparrow$\\
-		1 &  & nvt & nvt+1 &  & nvt+nmt & nvt+nmt+1 & & nvt+nel\\		
-		};
+ nodes in empty cells, minimum height = 2cm,
+ row 2/.style={nodes={draw=none}},
+ row 3/.style={nodes={draw=none}},column sep=-\pgflinewidth,]
+    {
+ v & $\dots$ & v & e & $\dots$ & e & c & \dots & c\\
+$\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$ & $\uparrow$  & $\uparrow$ & $\uparrow$\\
+1 &  & nvt & nvt+1 &  & nvt+nmt & nvt+nmt+1 & & nvt+nel\\
+};
 %\foreach \i [evaluate=\i as \ni using {int(\i)}, evaluate=\i as \ntext using {int(\i)}] in {1,3,4,6}
 %    \draw [{Stealth}-, red!70] (A-1-\ni.south west)--++(-90:5mm) node[below] {\ntext};
 \end{tikzpicture}
